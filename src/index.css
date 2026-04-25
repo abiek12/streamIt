@@ -1,6 +1,28 @@
 @import "tailwindcss";
 
-body {
-  margin: 0;
-  padding: 0;
+@theme {
+  --color-primary: #e50914; /* Brand red */
+  --color-primary-hover: #f6121d; /* Hover red */
+  --color-primary-dark: #b20710; /* Dark red */
+
+  --color-background: #141414; /* Main background */
+  --color-surface: #181818; /* Cards / sections */
+  --color-surface-2: #222222; /* Elevated surfaces */
+  --color-border: #333333; /* Borders */
+
+  --color-text-primary: #ffffff; /* Main text */
+  --color-text-secondary: #b3b3b3; /* Secondary text */
+  --color-text-muted: #808080; /* Muted text */
+
+  --color-success: #46d369; /* Positive */
+  --color-warning: #ffa00a; /* Warning */
+  --color-error: #e50914; /* Error */
+
+  --color-overlay: rgba(0, 0, 0, 0.65);
+  --color-hero-gradient: linear-gradient(
+    to top,
+    rgba(20, 20, 20, 1),
+    rgba(20, 20, 20, 0.4),
+    rgba(20, 20, 20, 0.1)
+  );
 }
