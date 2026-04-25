@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className="header absolute top-0 py-4 px-40 w-full flex justify-between items-center">
+    <div className="header absolute z-20 top-0 py-2 px-34 w-full flex justify-between items-center">
       <div className="left-section">
         <div className="logo w-48 h-auto">
           <img
