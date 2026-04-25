@@ -1,5 +1,7 @@
 # StreamIt
 
+StreamIt is a modern streaming platform web application
+
 ## Features
 
 - Public screen
