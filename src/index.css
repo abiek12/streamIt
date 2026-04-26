@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+body {
+  padding: 0;
+  margin: 0;
+  background: black;
+}
+
 @theme {
   --color-primary: #e50914; /* Brand red */
   --color-primary-hover: #f6121d; /* Hover red */
