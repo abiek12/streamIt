@@ -24,6 +24,22 @@ const Login = () => {
           Sign In
         </button>
       </form>
+      <div className="flex justify-between items-center w-full text-sm mb-16">
+        <div className="flex gap-2">
+          <input
+            type="checkbox"
+            name="Remember me"
+            id="remember"
+            className="cursor-pointer"
+          />
+          <label for="subscribe">Remember me</label>
+        </div>
+        <div className="cursor-pointer hover:underline">Need help?</div>
+      </div>
+      <div className="sign-up-call-to-action flex gap-2 text-sm">
+        <span className="text-text-muted">New to Netflix?</span>
+        <span className="cursor-pointer hover:underline">Sign up now</span>
+      </div>
     </div>
   );
 };
