@@ -1,6 +1,7 @@
 import { CaretRightIcon } from "@phosphor-icons/react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Login from "../components/Login";
 
 const Home = () => {
   return (
@@ -13,7 +14,8 @@ const Home = () => {
             alt="background-image"
           />
           <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/40 to-black"></div>
-          <div className="content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
+
+          {/* <div className="content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
             <div className="flex flex-col gap-4 items-center justify-center mb-8">
               <h1 className="text-6xl font-extrabold">
                 Unlimited movies, shows, and more
@@ -39,7 +41,9 @@ const Home = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
+
+          <Login />
         </div>
       </section>
       <Footer />
