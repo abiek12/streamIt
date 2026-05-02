@@ -12,12 +12,12 @@ const Home = () => {
   };
 
   return (
-    <div className="home relative bg-black h-screen w-full overflow-hidden text-white">
+    <div className="home relative bg-black w-full text-white">
       <Header value={isLoginScreen} toggle={toggleScreen} />
-      <section className="h-screen w-full overflow-hidden">
-        <div className="hero">
+      <section className="w-full">
+        <div className="hero relative h-[96vh] w-full overflow-hidden">
           <img
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
             src="https://assets.nflxext.com/ffe/siteui/vlv3/ba53094c-3e3b-4789-94a6-baac10310f07/web/IN-en-20260420-TRIFECTA-perspective_52edec47-1b88-414a-bbbe-670f7229d886_large.jpg"
             alt="background-image"
           />
@@ -26,9 +26,9 @@ const Home = () => {
           {isLoginScreen ? (
             <Login toggle={toggleScreen} />
           ) : (
-            <div className="content absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
+            <div className="content absolute top-7/12 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
               <div className="flex flex-col gap-4 items-center justify-center mb-8">
-                <h1 className="text-6xl font-extrabold">
+                <h1 className="text-6xl font-bold">
                   Unlimited movies, shows, and more
                 </h1>
                 <h4 className="text-xl font-bold">
@@ -56,7 +56,7 @@ const Home = () => {
           )}
 
           <svg
-            className="absolute bottom-0 left-0 w-full h-[140px] z-20"
+            className="absolute bottom-0 left-0 w-full h-35 z-20"
             viewBox="0 0 1440 160"
             preserveAspectRatio="none"
           >
