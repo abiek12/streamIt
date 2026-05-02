@@ -1,6 +1,6 @@
 const Login = ({ toggle }) => {
   return (
-    <div className="absolute inset-0 p-16 z-10 w-3/12 h-7/12 flex flex-col gap-4 justify-start items-start bg-black/60 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute inset-0 p-16 z-10 w-3/12 h-7/12 flex flex-col gap-4 justify-start items-start bg-black/70 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <h1 className="text-3xl font-bold w-full mb-6">Sign In</h1>
       <form
         action=""

@@ -21,14 +21,14 @@ const Home = () => {
             src="https://assets.nflxext.com/ffe/siteui/vlv3/ba53094c-3e3b-4789-94a6-baac10310f07/web/IN-en-20260420-TRIFECTA-perspective_52edec47-1b88-414a-bbbe-670f7229d886_large.jpg"
             alt="background-image"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/40 to-black"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-black"></div>
 
           {isLoginScreen ? (
             <Login toggle={toggleScreen} />
           ) : (
             <div className="content absolute top-7/12 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
               <div className="flex flex-col gap-4 items-center justify-center mb-8">
-                <h1 className="text-6xl font-bold">
+                <h1 className="text-6xl font-bold leading-18">
                   Unlimited movies, shows, and more
                 </h1>
                 <h4 className="text-xl font-bold">
