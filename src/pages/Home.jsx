@@ -5,7 +5,7 @@ import Login from "../components/Login";
 import { useState } from "react";
 
 const Home = () => {
-  const [isLoginScreen, setIsLoginScreen] = useState(true);
+  const [isLoginScreen, setIsLoginScreen] = useState(false);
 
   const toggleScreen = () => {
     setIsLoginScreen(!isLoginScreen);
@@ -17,6 +17,7 @@ const Home = () => {
       <section className="h-screen w-full overflow-hidden">
         <div className="hero">
           <img
+            className="w-full h-full object-cover"
             src="https://assets.nflxext.com/ffe/siteui/vlv3/ba53094c-3e3b-4789-94a6-baac10310f07/web/IN-en-20260420-TRIFECTA-perspective_52edec47-1b88-414a-bbbe-670f7229d886_large.jpg"
             alt="background-image"
           />
@@ -53,7 +54,86 @@ const Home = () => {
               </div>
             </div>
           )}
+
+          <svg
+            className="absolute bottom-0 left-0 w-full h-[140px] z-20"
+            viewBox="0 0 1440 160"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              {/* Main sharp line */}
+              <linearGradient
+                id="lineCore"
+                x1="0"
+                y1="0"
+                x2="1440"
+                y2="0"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stopColor="#ff0057" stopOpacity="0" />
+                <stop offset="20%" stopColor="#ff0057" />
+                <stop offset="50%" stopColor="#ff3d9a" />
+                <stop offset="80%" stopColor="#ff0057" />
+                <stop offset="100%" stopColor="#ff0057" stopOpacity="0" />
+              </linearGradient>
+
+              {/* Glow gradient */}
+              <linearGradient
+                id="lineGlow"
+                x1="0"
+                y1="0"
+                x2="1440"
+                y2="0"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stopColor="#ff0057" stopOpacity="0" />
+                <stop offset="50%" stopColor="#ff3d9a" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#ff0057" stopOpacity="0" />
+              </linearGradient>
+
+              {/* Blue fill */}
+              <linearGradient
+                id="fillGradient"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#0b0f2a" />
+                <stop offset="100%" stopColor="#000000" />
+              </linearGradient>
+
+              {/* Blur for glow */}
+              <filter id="blur">
+                <feGaussianBlur stdDeviation="6" />
+              </filter>
+            </defs>
+
+            {/* Blue curved section */}
+            <path
+              d="M0,120 Q720,20 1440,120 L1440,160 L0,160 Z"
+              fill="url(#fillGradient)"
+            />
+
+            {/* Glow stroke (thick + blur) */}
+            <path
+              d="M0,120 Q720,20 1440,120"
+              fill="none"
+              stroke="url(#lineGlow)"
+              strokeWidth="10"
+              filter="url(#blur)"
+            />
+
+            {/* Sharp top line */}
+            <path
+              d="M0,120 Q720,20 1440,120"
+              fill="none"
+              stroke="url(#lineCore)"
+              strokeWidth="2.5"
+            />
+          </svg>
         </div>
+        <div className=""></div>
       </section>
       <Footer />
     </div>
