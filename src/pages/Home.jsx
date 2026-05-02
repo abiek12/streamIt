@@ -133,7 +133,19 @@ const Home = () => {
             />
           </svg>
         </div>
-        <div className=""></div>
+        <div className="">
+          <div className="trending-now">
+            <h1>Trending Now</h1>
+            <ul></ul>
+          </div>
+          <div className="more-benifits">
+            <h1>More reasons to join</h1>
+            <div className="cards"></div>
+          </div>
+          <div className="faq">
+            <h1>Frequently Asked Questions</h1>
+          </div>
+        </div>
       </section>
       <Footer />
     </div>
