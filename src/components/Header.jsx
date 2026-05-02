@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({ value, toggle }) => {
   return (
     <div className="header absolute z-20 top-0 py-2 px-34 w-full flex justify-between items-center">
       <div className="left-section">
@@ -39,8 +39,11 @@ const Header = () => {
           </div>
         </div>
         <div className="">
-          <button className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer">
-            Sign In
+          <button
+            onClick={toggle}
+            className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer"
+          >
+            {value ? "Sign Up" : "Sign In"}
           </button>
         </div>
       </div>
