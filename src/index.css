@@ -6,6 +6,19 @@ body {
   background: black;
 }
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 @theme {
   --color-primary: #e50914; /* Brand red */
   --color-primary-hover: #f6121d; /* Hover red */

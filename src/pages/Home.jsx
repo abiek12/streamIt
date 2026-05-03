@@ -139,7 +139,7 @@ const Home = () => {
         <div className="px-36 flex flex-col gap-16">
           <div className="trending-now">
             <h1 className="text-2xl font-semibold">Trending Now</h1>
-            <ul className="flex gap-2 w-full overflow-x-scroll px-1">
+            <ul className="flex gap-2 w-full overflow-x-scroll no-scrollbar px-1">
               {trendingItems.map((item, idx) => (
                 <li key={idx} className="relative px-5 py-6 cursor-pointer">
                   <div className="w-44 h-64 rounded-lg overflow-hidden">
