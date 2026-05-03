@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Login from "../components/Login";
 import { useState } from "react";
 import { TRENDING_DUMMY } from "../utils/dummyData";
+import { CDN_URL } from "../utils/constants";
 
 const Home = () => {
   const [isLoginScreen, setIsLoginScreen] = useState(false);
@@ -139,17 +140,19 @@ const Home = () => {
           <div className="trending-now">
             <h1 className="text-2xl font-semibold">Trending Now</h1>
             <ul className="flex gap-2 w-full overflow-x-scroll">
-              <li className="p-4">
-                <div className="relative w-36 h-48 rounded-lg overflow-hidden">
-                  <span className="w-full h-full">
-                    <img
-                      src="https://occ-0-4994-3662.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXAno1EQYBrTWHZiObYqiwtv8SdMkgWP5Tk7isX0zhfi4RQC18pNHBPJ_3oXUlUX2kvXgN8se4NKxvhfEPKXq7TB1-dvvcoU715O9HyzSfeWCv_l-T9XpSoTH5njSJDhivQu.jpg?r=df5"
-                      alt=""
-                    />
-                  </span>
-                  <span className="absolute inset-0">1</span>
-                </div>
-              </li>
+              {trendingItems.map((item, idx) => (
+                <li key={idx} className="p-4">
+                  <div className="relative w-36 h-48 rounded-lg overflow-hidden">
+                    <span className="w-full h-full">
+                      <img
+                        src={`${CDN_URL}/${item.url}`}
+                        alt="Trending Movie Card"
+                      />
+                    </span>
+                    <span className="absolute inset-0">{item.position}</span>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="more-benifits">
