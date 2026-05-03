@@ -141,7 +141,10 @@ const Home = () => {
             <h1 className="text-2xl font-semibold">Trending Now</h1>
             <ul className="flex gap-2 w-full overflow-x-scroll no-scrollbar px-1">
               {trendingItems.map((item, idx) => (
-                <li key={idx} className="relative px-5 py-6 cursor-pointer">
+                <li
+                  key={idx}
+                  className="relative px-5 py-6 cursor-pointer transition-transform ease-in-out duration-300 hover:scale-105"
+                >
                   <div className="w-44 h-64 rounded-lg overflow-hidden">
                     <img
                       src={`${CDN_URL}/${item.url}`}
