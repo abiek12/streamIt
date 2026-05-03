@@ -25,15 +25,15 @@ export const TRENDING_DUMMY = [
   },
   {
     position: "7",
-    url: "mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABS5_WKkYw2XkjTZLfH3H9S2VXAtORFcLuoG0R0UWg-4gJaByzSU2nI6eYfYqylPsvS9g1XKemid_x0DYvobqdPoAtRgy-rhC4_k.jpg?r=090",
+    url: "mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABQbLcW4zosYeKxa0N1Y64zgriAJzKIYbI7rSY3Qr63E9KVcsQWGbLJg20vAgF2T1gnI4VwwVUi2-tl4K-Isq-AM6eAaG2GdaePA.jpg?r=3ea",
   },
   {
     position: "8",
-    url: "mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXysdaZbfhuvpoxFjdAUzKlKMWlzVTmPK2ypBf1rMbhnSh9HWzaNsPm8H-s6f9OzHMhq2aq7W-VXXmF_f1CsPvL6uSRzPUgZKSu53WME-Ko5ib8R_B9qaIzAfWVxn_WujbEY.jpg?r=fb7",
+    url: "mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABS5_WKkYw2XkjTZLfH3H9S2VXAtORFcLuoG0R0UWg-4gJaByzSU2nI6eYfYqylPsvS9g1XKemid_x0DYvobqdPoAtRgy-rhC4_k.jpg?r=090",
   },
   {
     position: "9",
-    url: "mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXAno1EQYBrTWHZiObYqiwtv8SdMkgWP5Tk7isX0zhfi4RQC18pNHBPJ_3oXUlUX2kvXgN8se4NKxvhfEPKXq7TB1-dvvcoU715O9HyzSfeWCv_l-T9XpSoTH5njSJDhivQu.jpg?r=df5",
+    url: "mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXysdaZbfhuvpoxFjdAUzKlKMWlzVTmPK2ypBf1rMbhnSh9HWzaNsPm8H-s6f9OzHMhq2aq7W-VXXmF_f1CsPvL6uSRzPUgZKSu53WME-Ko5ib8R_B9qaIzAfWVxn_WujbEY.jpg?r=fb7",
   },
   {
     position: "10",

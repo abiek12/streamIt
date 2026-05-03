@@ -136,20 +136,21 @@ const Home = () => {
             />
           </svg>
         </div>
-        <div className="px-34 flex flex-col gap-16">
+        <div className="px-36 flex flex-col gap-16">
           <div className="trending-now">
             <h1 className="text-2xl font-semibold">Trending Now</h1>
-            <ul className="flex gap-2 w-full overflow-x-scroll">
+            <ul className="flex gap-2 w-full overflow-x-scroll px-1">
               {trendingItems.map((item, idx) => (
-                <li key={idx} className="p-4">
-                  <div className="relative w-36 h-48 rounded-lg overflow-hidden">
-                    <span className="w-full h-full">
-                      <img
-                        src={`${CDN_URL}/${item.url}`}
-                        alt="Trending Movie Card"
-                      />
+                <li key={idx} className="relative px-5 py-6 cursor-pointer">
+                  <div className="w-44 h-64 rounded-lg overflow-hidden">
+                    <img
+                      src={`${CDN_URL}/${item.url}`}
+                      alt="Trending Movie Card"
+                      className="w-full h-full object-cover"
+                    />
+                    <span className="absolute inset-0 text-8xl font-extrabold text-black [text-shadow:0_1px_0_rgb(0_0_0)] [-webkit-text-stroke:2px_#D3D3D3] -left-1 top-40">
+                      {item.position}
                     </span>
-                    <span className="absolute inset-0">{item.position}</span>
                   </div>
                 </li>
               ))}
