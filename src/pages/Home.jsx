@@ -160,8 +160,20 @@ const Home = () => {
             </ul>
           </div>
           <div className="more-benifits">
-            <h1>More reasons to join</h1>
-            <div className="cards"></div>
+            <h1 className="text-2xl font-semibold mb-4">
+              More reasons to join
+            </h1>
+            <div className="cards flex gap-4">
+              <div className="flex flex-col gap-4 p-4">
+                <div className="headings text-xl font-semibold">
+                  Enjoy on your TV
+                </div>
+                <p>
+                  Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV,
+                  Blu-ray players and more.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="faq">
             <h1>Frequently Asked Questions</h1>
