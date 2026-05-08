@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className="home relative bg-black w-full text-white">
       <Header value={isLoginScreen} toggle={toggleScreen} />
-      <section className="w-full">
+      <section className="w-full mb-16">
         <div className="hero relative h-[96vh] w-full overflow-hidden">
           <img
             className="absolute inset-0 w-full h-full object-cover"
@@ -49,7 +49,7 @@ const Home = () => {
                     type="text"
                     placeholder="Email address"
                   />
-                  <button className="bg-primary hover:bg-primary-dark flex items-center justify-between gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1 justify-between">
+                  <button className="bg-primary hover:bg-primary-dark flex items-center justify-evenly gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1">
                     <h3 className="text-2xl font-semibold">Get Started</h3>
                     <CaretRightIcon size={24} color="#ffffff" />
                   </button>
@@ -140,6 +140,29 @@ const Home = () => {
           <TrendingItems />
           <Benefits />
           <Faq />
+          <div className="w-full flex justify-center">
+            <div className="flex flex-col gap-4 items-center justify-center w-3xl">
+              <h4 className="font-normal">
+                Ready to watch? Enter your email to create or restart your
+                membership.
+              </h4>
+              <div className="flex w-full gap-2 justify-between items-center">
+                <input
+                  className="border border-solid border-text-muted bg-surface/80 p-3 rounded-sm h-14 w-3/5 flex-1"
+                  type="text"
+                  placeholder="Email address"
+                />
+                <button className="bg-primary hover:bg-primary-dark flex items-center justify-evenly gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-none">
+                  <div className="">
+                    <h3 className="text-2xl font-semibold">Get Started</h3>
+                  </div>
+                  <div className="">
+                    <CaretRightIcon size={24} color="#ffffff" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <Footer />

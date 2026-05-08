@@ -33,7 +33,7 @@ const Faq = () => {
 
                 {i.state && (
                   <div className="px-6 py-7 cursor-default bg-surface-2 text-xl">
-                    {i.answer}
+                    <p>{i.answer}</p>
                   </div>
                 )}
               </div>
