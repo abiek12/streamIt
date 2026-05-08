@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className="home relative bg-black w-full text-white">
       <Header value={isLoginScreen} toggle={toggleScreen} />
-      <section className="w-full mb-16">
+      <section className="w-full">
         <div className="hero relative h-[96vh] w-full overflow-hidden">
           <img
             className="absolute inset-0 w-full h-full object-cover"
