@@ -1,4 +1,4 @@
-import { PlusIcon } from "@phosphor-icons/react";
+import { PlusIcon, XIcon } from "@phosphor-icons/react";
 import { FAQ_DUMMY } from "../utils/dummyData";
 import { useState } from "react";
 
@@ -27,7 +27,7 @@ const Faq = () => {
                 <button onClick={() => toggleItem(idx)}>
                   <li className="px-6 py-7 bg-surface-2 text-2xl cursor-pointer hover:bg-border flex justify-between items-center">
                     {i.question}
-                    <PlusIcon size={32} />
+                    {i.state ? <XIcon size={32} /> : <PlusIcon size={32} />}
                   </li>
                 </button>
 
