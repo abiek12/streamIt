@@ -2,8 +2,8 @@ const Benefits = () => {
   return (
     <div className="more-benifits">
       <h1 className="text-2xl font-semibold mb-4">More reasons to join</h1>
-      <div className="cards flex gap-4">
-        <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+      <div className="cards grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
               Enjoy on your TV
@@ -135,7 +135,7 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+        <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
               Download your shows to watch offline
@@ -286,7 +286,7 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+        <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
               Watch everywhere
@@ -466,7 +466,7 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+        <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
               Create profiles for kids
