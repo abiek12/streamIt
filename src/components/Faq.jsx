@@ -1,9 +1,17 @@
 import { PlusIcon } from "@phosphor-icons/react";
 import { FAQ_DUMMY } from "../utils/dummyData";
+import { useState } from "react";
 
 const Faq = () => {
-  const toggleItem = (item) => {
-    console.log(item);
+  const [faq, setFaq] = useState(FAQ_DUMMY);
+
+  const toggleItem = (index) => {
+    const updatedFaq = faq.map((item, idx) => ({
+      ...item,
+      state: idx === index ? !item.state : false,
+    }));
+
+    setFaq(updatedFaq);
   };
 
   return (
@@ -14,13 +22,21 @@ const Faq = () => {
       <div className="">
         {
           <ul className="flex flex-col gap-2">
-            {FAQ_DUMMY.map((i) => (
-              <button onClick={() => toggleItem(i)}>
-                <li className="px-6 py-7 bg-surface-2 text-2xl cursor-pointer hover:bg-border flex justify-between items-center">
-                  {i.question}
-                  <PlusIcon size={32} />
-                </li>
-              </button>
+            {faq.map((i, idx) => (
+              <div className="flex flex-col">
+                <button onClick={() => toggleItem(idx)}>
+                  <li className="px-6 py-7 bg-surface-2 text-2xl cursor-pointer hover:bg-border flex justify-between items-center">
+                    {i.question}
+                    <PlusIcon size={32} />
+                  </li>
+                </button>
+
+                {i.state && (
+                  <div className="px-6 py-7 cursor-default bg-surface-2 text-xl">
+                    {i.answer}
+                  </div>
+                )}
+              </div>
             ))}
           </ul>
         }
