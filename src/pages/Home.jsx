@@ -49,7 +49,7 @@ const Home = () => {
                     type="text"
                     placeholder="Email address"
                   />
-                  <button className="bg-primary hover:bg-primary-dark flex items-center justify-between gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1">
+                  <button className="bg-primary hover:bg-primary-dark flex items-center justify-between gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1 justify-between">
                     <h3 className="text-2xl font-semibold">Get Started</h3>
                     <CaretRightIcon size={24} color="#ffffff" />
                   </button>
@@ -164,7 +164,7 @@ const Home = () => {
               More reasons to join
             </h1>
             <div className="cards flex gap-4">
-              <div className="flex flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+              <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
                 <div className="flex flex-col gap-4">
                   <div className="headings text-2xl font-semibold">
                     Enjoy on your TV
@@ -296,7 +296,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+              <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
                 <div className="flex flex-col gap-4">
                   <div className="headings text-2xl font-semibold">
                     Download your shows to watch offline
@@ -460,7 +460,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+              <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
                 <div className="flex flex-col gap-4">
                   <div className="headings text-2xl font-semibold">
                     Watch everywhere
@@ -652,7 +652,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
+              <div className="flex flex-1 justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
                 <div className="flex flex-col gap-4">
                   <div className="headings text-2xl font-semibold">
                     Create profiles for kids
