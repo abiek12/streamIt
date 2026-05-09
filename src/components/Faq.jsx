@@ -23,7 +23,7 @@ const Faq = () => {
         {
           <ul className="flex flex-col gap-2">
             {faq.map((i, idx) => (
-              <div className="flex flex-col">
+              <div key={idx} className="flex flex-col">
                 <button onClick={() => toggleItem(idx)}>
                   <li className="px-6 py-7 bg-surface-2 text-2xl cursor-pointer hover:bg-border flex justify-between items-center">
                     {i.question}
