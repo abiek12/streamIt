@@ -4,7 +4,7 @@ import { loginSchema } from "../utils/validate";
 
 const Login = ({ toggle }) => {
   const {
-    login,
+    register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema) });
@@ -14,31 +14,31 @@ const Login = ({ toggle }) => {
   };
 
   return (
-    <div className="absolute inset-0 p-16 z-10 w-3/12 h-7/12 flex flex-col gap-4 justify-start items-start bg-black/70 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 w-full max-w-md p-16 rounded-md flex flex-col gap-4">
       <h1 className="text-3xl font-bold w-full mb-6">Sign In</h1>
       <form
-        onBlur={handleSubmit(handleLoginSubmit)}
+        onSubmit={handleSubmit(handleLoginSubmit)}
         action=""
         method="post"
         className="flex flex-col justify-center items-center gap-4 w-full"
       >
-        <div className="">
+        <div className="w-full flex flex-col gap-2">
           <input
             type="text"
             placeholder="Email or phone number"
             className="w-full bg-surface-2 p-4 rounded-sm"
-            {...login("email")}
+            {...register("email")}
           />
           {errors.email && (
             <p className="text-red-600 text-sm">{errors.email.message}</p>
           )}
         </div>
-        <div className="">
+        <div className="w-full flex flex-col gap-2">
           <input
             type="text"
             placeholder="Password"
             className="w-full bg-surface-2 p-4 rounded-sm"
-            {...login("password")}
+            {...register("password")}
           />
           {errors.password && (
             <p className="text-red-600 text-sm">{errors.password.message}</p>
@@ -51,7 +51,7 @@ const Login = ({ toggle }) => {
           Sign In
         </button>
       </form>
-      <div className="flex justify-between items-center w-full text-sm mb-16">
+      <div className="flex justify-between items-center w-full text-sm mb-8">
         <div className="flex gap-2">
           <input
             type="checkbox"
@@ -59,7 +59,7 @@ const Login = ({ toggle }) => {
             id="remember"
             className="cursor-pointer"
           />
-          <label for="subscribe">Remember me</label>
+          <label htmlFor="remember">Remember me</label>
         </div>
         <div className="cursor-pointer hover:underline">Need help?</div>
       </div>
