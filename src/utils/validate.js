@@ -1,4 +1,4 @@
-import z from "zod";
+import z, { email } from "zod";
 
 export const loginSchema = z.object({
   email: z.email("Invalid email address!"),
@@ -12,4 +12,8 @@ export const loginSchema = z.object({
           "Password must contain uppercase, lowercase, number, and special character",
       }
     ),
+});
+
+export const registerSchema = z.object({
+  email: z.email("Invalid email address!"),
 });

@@ -6,12 +6,25 @@ import { useState } from "react";
 import TrendingItems from "../components/TrendingItems";
 import Benefits from "../components/Benefits";
 import Faq from "../components/Faq";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema } from "../utils/validate";
 
 const Home = () => {
   const [isLoginScreen, setIsLoginScreen] = useState(false);
 
   const toggleScreen = () => {
     setIsLoginScreen(!isLoginScreen);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(registerSchema) });
+
+  const handleLoginSubmit = (data) => {
+    console.log("Form submitted:", data);
   };
 
   return (
@@ -43,17 +56,30 @@ const Home = () => {
                   Ready to watch? Enter your email to create or restart your
                   membership.
                 </h4>
-                <div className="flex w-full gap-2 justify-between items-center">
-                  <input
-                    className="border border-solid border-text-muted bg-surface/80 p-3 rounded-sm h-14 w-3/5 flex-none"
-                    type="text"
-                    placeholder="Email address"
-                  />
-                  <button className="bg-primary hover:bg-primary-dark flex items-center justify-evenly gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1">
-                    <h3 className="text-2xl font-semibold">Get Started</h3>
-                    <CaretRightIcon size={24} color="#ffffff" />
-                  </button>
-                </div>
+                <form
+                  className="w-full"
+                  action=""
+                  method="post"
+                  onSubmit={handleSubmit(handleLoginSubmit)}
+                >
+                  <div className="flex w-full gap-2 justify-between items-center mb-2">
+                    <input
+                      className="border border-solid border-text-muted bg-surface/80 p-3 rounded-sm h-14 w-3/5 flex-none"
+                      type="text"
+                      placeholder="Email address"
+                      {...register("email")}
+                    />
+                    <button className="bg-primary hover:bg-primary-dark flex items-center justify-evenly gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1">
+                      <h3 className="text-2xl font-semibold">Get Started</h3>
+                      <CaretRightIcon size={24} color="#ffffff" />
+                    </button>
+                  </div>
+                  {errors.email && (
+                    <p className="text-red-600 text-sm text-start">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </form>
               </div>
             </div>
           )}
