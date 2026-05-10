@@ -1,24 +1,35 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { loginSchema } from "../utils/validate";
+import { loginSchema, registerSchema } from "../utils/validate";
 import { useEffect, useState } from "react";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
-
-  const toggleAuth = () => {
-    setIsLogin(!isLogin);
-  };
+  const currentSchema = isLogin ? loginSchema : registerSchema;
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful },
-  } = useForm({ resolver: zodResolver(loginSchema), mode: "onBlur" });
+  } = useForm({ resolver: zodResolver(currentSchema), mode: "onBlur" });
 
-  const handleFormSubmit = (data) => {
-    console.log("Form submitted:", data);
+  const toggleAuth = () => {
+    setIsLogin(!isLogin);
+    reset();
+  };
+
+  const handleFormSubmit = async (data) => {
+    try {
+      if (isLogin) {
+        // sign-in
+      } else {
+        // sign-up
+      }
+      reset();
+    } catch (error) {
+      console.log("Error while submitting form:", error);
+    }
   };
 
   useEffect(() => {
