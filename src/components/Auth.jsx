@@ -2,6 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema, registerSchema } from "../utils/validate";
 import { useEffect, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,16 +22,20 @@ const Auth = () => {
   };
 
   const handleFormSubmit = async (data) => {
-    try {
-      if (isLogin) {
-        // sign-in
-      } else {
-        // sign-up
-      }
-      reset();
-    } catch (error) {
-      console.log("Error while submitting form:", error);
+    if (isLogin) {
+      // sign-in
+    } else {
+      // sign-up
+      createUserWithEmailAndPassword(auth, data.email, data.password)
+        .then((userCred) => {
+          const user = userCred.user;
+          console.log("user:", user);
+        })
+        .catch((err) => {
+          console.log("Error while sign-in:", err);
+        });
     }
+    reset();
   };
 
   useEffect(() => {
