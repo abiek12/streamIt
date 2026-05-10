@@ -2,7 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema, registerSchema } from "../utils/validate";
 import { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
 
@@ -25,16 +28,27 @@ const Auth = () => {
   const handleFormSubmit = async (data) => {
     if (isLogin) {
       // sign-in
+      signInWithEmailAndPassword(auth, data.email, data.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("user:", user);
+          popupNotification(TOAST_TYPE.SUCCESS, "Logged in successfully!");
+        })
+        .catch((error) => {
+          console.log("Error while sign-up:", error);
+          popupNotification(TOAST_TYPE.ERROR, error.message);
+        });
     } else {
       // sign-up
       createUserWithEmailAndPassword(auth, data.email, data.password)
         .then((userCred) => {
           const user = userCred.user;
           console.log("user:", user);
+          popupNotification(TOAST_TYPE.SUCCESS, "Registered successfully!");
         })
-        .catch((err) => {
-          console.log("Error while sign-in:", err);
-          popupNotification(TOAST_TYPE.ERROR, err.message);
+        .catch((error) => {
+          console.log("Error while sign-in:", error);
+          popupNotification(TOAST_TYPE.ERROR, error.message);
         });
     }
     reset();
