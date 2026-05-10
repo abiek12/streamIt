@@ -4,6 +4,7 @@ import { loginSchema, registerSchema } from "../utils/validate";
 import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -33,6 +34,7 @@ const Auth = () => {
         })
         .catch((err) => {
           console.log("Error while sign-in:", err);
+          popupNotification(TOAST_TYPE.ERROR, err.message);
         });
     }
     reset();
