@@ -43,7 +43,7 @@ const Header = ({ value, toggle }) => {
             onClick={toggle}
             className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer"
           >
-            {value ? "Sign Up" : "Sign In"}
+            {value ? "Home" : "Sign In"}
           </button>
         </div>
       </div>

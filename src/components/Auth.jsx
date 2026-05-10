@@ -1,9 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../utils/validate";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const Login = ({ toggle }) => {
+const Auth = () => {
+  const [isLogin, setIsLogin] = useState(true);
+
+  const toggleAuth = () => {
+    setIsLogin(!isLogin);
+  };
+
   const {
     register,
     handleSubmit,
@@ -11,7 +17,7 @@ const Login = ({ toggle }) => {
     formState: { errors, isSubmitSuccessful },
   } = useForm({ resolver: zodResolver(loginSchema), mode: "onBlur" });
 
-  const handleLoginSubmit = (data) => {
+  const handleFormSubmit = (data) => {
     console.log("Form submitted:", data);
   };
 
@@ -23,13 +29,28 @@ const Login = ({ toggle }) => {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 w-full max-w-md p-16 rounded-md flex flex-col gap-4">
-      <h1 className="text-3xl font-bold w-full mb-6">Sign In</h1>
+      <h1 className="text-3xl font-bold w-full mb-6">
+        {isLogin ? "Sign In" : "Sign Up"}
+      </h1>
       <form
-        onSubmit={handleSubmit(handleLoginSubmit)}
+        onSubmit={handleSubmit(handleFormSubmit)}
         action=""
         method="post"
         className="flex flex-col justify-center items-center gap-4 w-full"
       >
+        {!isLogin && (
+          <div className="w-full flex flex-col gap-2">
+            <input
+              type="text"
+              placeholder="Username"
+              className="w-full bg-surface-2 p-4 rounded-sm"
+              {...register("userName")}
+            />
+            {errors.userName && (
+              <p className="text-red-600 text-sm">{errors.userName.message}</p>
+            )}
+          </div>
+        )}
         <div className="w-full flex flex-col gap-2">
           <input
             type="text"
@@ -56,7 +77,7 @@ const Login = ({ toggle }) => {
           type="submit"
           className="w-full mt-6 bg-primary p-4 cursor-pointer hover:bg-primary-dark font-medium"
         >
-          Sign In
+          {isLogin ? "Sign In" : "Sign Up"}
         </button>
       </form>
       <div className="flex justify-between items-center w-full text-sm mb-8">
@@ -72,13 +93,15 @@ const Login = ({ toggle }) => {
         <div className="cursor-pointer hover:underline">Need help?</div>
       </div>
       <div className="sign-up-call-to-action flex gap-2 text-sm">
-        <span className="text-text-muted">New to Netflix?</span>
-        <button className="cursor-pointer hover:underline" onClick={toggle}>
-          Sign up now
+        <span className="text-text-muted">
+          {isLogin ? "New to Netflix?" : "Already registered?"}
+        </span>
+        <button className="cursor-pointer hover:underline" onClick={toggleAuth}>
+          {isLogin ? "Sign up now." : "Sign in now."}
         </button>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Auth;

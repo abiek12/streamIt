@@ -1,42 +1,22 @@
 import { CaretRightIcon } from "@phosphor-icons/react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Login from "../components/Login";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TrendingItems from "../components/TrendingItems";
 import Benefits from "../components/Benefits";
 import Faq from "../components/Faq";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema } from "../utils/validate";
+import Auth from "../components/Auth";
 
 const Home = () => {
-  const [isLoginScreen, setIsLoginScreen] = useState(false);
+  const [isAuthScreen, setIsAuthScreen] = useState(false);
 
   const toggleScreen = () => {
-    setIsLoginScreen(!isLoginScreen);
+    setIsAuthScreen(!isAuthScreen);
   };
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitSuccessful },
-  } = useForm({ resolver: zodResolver(registerSchema), mode: "onBlur" });
-
-  const handleRegSubmit = (data) => {
-    console.log("Form submitted:", data);
-  };
-
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-    }
-  }, [isSubmitSuccessful, reset]);
 
   return (
     <div className="home relative bg-black w-full text-white">
-      <Header value={isLoginScreen} toggle={toggleScreen} />
+      <Header value={isAuthScreen} toggle={toggleScreen} />
       <section className="w-full">
         <div className="hero relative h-[96vh] w-full overflow-hidden">
           <img
@@ -46,8 +26,8 @@ const Home = () => {
           />
           <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-black"></div>
 
-          {isLoginScreen ? (
-            <Login toggle={toggleScreen} />
+          {isAuthScreen ? (
+            <Auth />
           ) : (
             <div className="content absolute top-7/12 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
               <div className="flex flex-col gap-4 items-center justify-center mb-8">
@@ -63,7 +43,14 @@ const Home = () => {
                   Ready to watch? Enter your email to create or restart your
                   membership.
                 </h4>
-                <form
+                <button
+                  onClick={toggleScreen}
+                  className="bg-primary hover:bg-primary-dark flex items-center justify-evenly gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1"
+                >
+                  <h3 className="text-2xl font-semibold">Get Started</h3>
+                  <CaretRightIcon size={24} color="#ffffff" />
+                </button>
+                {/* <form
                   className="w-full"
                   action=""
                   method="post"
@@ -86,7 +73,7 @@ const Home = () => {
                       {errors.email.message}
                     </p>
                   )}
-                </form>
+                </form> */}
               </div>
             </div>
           )}
