@@ -1,17 +1,25 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../utils/validate";
+import { useEffect } from "react";
 
 const Login = ({ toggle }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: zodResolver(loginSchema) });
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({ resolver: zodResolver(loginSchema), mode: "onBlur" });
 
   const handleLoginSubmit = (data) => {
     console.log("Form submitted:", data);
   };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 w-full max-w-md p-16 rounded-md flex flex-col gap-4">

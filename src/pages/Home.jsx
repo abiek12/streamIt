@@ -2,7 +2,7 @@ import { CaretRightIcon } from "@phosphor-icons/react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Login from "../components/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TrendingItems from "../components/TrendingItems";
 import Benefits from "../components/Benefits";
 import Faq from "../components/Faq";
@@ -20,12 +20,19 @@ const Home = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: zodResolver(registerSchema) });
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({ resolver: zodResolver(registerSchema), mode: "onBlur" });
 
-  const handleLoginSubmit = (data) => {
+  const handleRegSubmit = (data) => {
     console.log("Form submitted:", data);
   };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <div className="home relative bg-black w-full text-white">
@@ -60,7 +67,7 @@ const Home = () => {
                   className="w-full"
                   action=""
                   method="post"
-                  onSubmit={handleSubmit(handleLoginSubmit)}
+                  onSubmit={handleSubmit(handleRegSubmit)}
                 >
                   <div className="flex w-full gap-2 justify-between items-center mb-2">
                     <input
