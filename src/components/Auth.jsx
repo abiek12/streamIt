@@ -11,6 +11,7 @@ import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const currentSchema = isLogin ? loginSchema : registerSchema;
 
   const {
@@ -26,6 +27,7 @@ const Auth = () => {
   };
 
   const handleFormSubmit = async (data) => {
+    setIsLoading(true);
     if (isLogin) {
       // sign-in
       signInWithEmailAndPassword(auth, data.email, data.password)
@@ -37,6 +39,9 @@ const Auth = () => {
         .catch((error) => {
           console.log("Error while sign-up:", error);
           popupNotification(TOAST_TYPE.ERROR, error.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     } else {
       // sign-up
@@ -49,6 +54,9 @@ const Auth = () => {
         .catch((error) => {
           console.log("Error while sign-in:", error);
           popupNotification(TOAST_TYPE.ERROR, error.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
     reset();
@@ -108,9 +116,16 @@ const Auth = () => {
         </div>
         <button
           type="submit"
-          className="w-full mt-6 bg-primary p-4 cursor-pointer hover:bg-primary-dark font-medium"
+          disabled={isLoading}
+          className="w-full mt-6 bg-primary p-4 cursor-pointer hover:bg-primary-dark font-medium flex justify-evenly items-center"
         >
-          {isLogin ? "Sign In" : "Sign Up"}
+          {isLoading ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : isLogin ? (
+            "Sign In"
+          ) : (
+            "Sign Up"
+          )}
         </button>
       </form>
       <div className="flex justify-between items-center w-full text-sm mb-8">
