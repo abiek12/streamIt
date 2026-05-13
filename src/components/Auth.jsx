@@ -81,7 +81,6 @@ const Auth = () => {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
         navigate("/browse");
-        dis;
       } else {
         // User is signed out
         dispatch(removeUser());
