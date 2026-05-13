@@ -80,10 +80,12 @@ const Auth = () => {
         // User is signed in
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
+        popupNotification(TOAST_TYPE.SUCCESS, "Logged in successfully!");
         navigate("/browse");
       } else {
         // User is signed out
         dispatch(removeUser());
+        popupNotification(TOAST_TYPE.INFO, "Logged out successfully!");
         navigate("/");
       }
     });
