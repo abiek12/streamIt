@@ -1,6 +1,13 @@
 import { CaretDownIcon } from "@phosphor-icons/react";
+import { useState } from "react";
+import { ProfileDropDown } from "./ProfileDropDown";
 
 const Header = ({ value, toggle, authState }) => {
+  const [isProfileDropDown, setIsProfileDropDown] = useState(false);
+  const toggleProfileDropDown = () => {
+    setIsProfileDropDown(!isProfileDropDown);
+  };
+
   return (
     <div className="header absolute z-20 top-0 py-2 px-36 w-full flex justify-between items-center">
       <div className="left-section">
@@ -11,7 +18,7 @@ const Header = ({ value, toggle, authState }) => {
           />
         </div>
       </div>
-      <div className="right-section flex justify-between items-center gap-3">
+      <div className="relative right-section flex justify-between items-center gap-3">
         <div className="lang bg-surface text-text-primary py-1 px-2 flex justify-between items-center gap-2 border border-solid border-text-muted cursor-pointer">
           <div className="">
             <svg
@@ -41,8 +48,11 @@ const Header = ({ value, toggle, authState }) => {
           </div>
         </div>
         {authState ? (
-          <div className="flex justify-center items-center gap-2 cursor-pointer">
-            <button className="w-9 h-9">
+          <div
+            onClick={toggleProfileDropDown}
+            className="flex justify-center items-center gap-2 cursor-pointer"
+          >
+            <button className="w-9 h-9 cursor-pointer">
               <img
                 className="w-full h-full"
                 src="/userProfile.jpg"
@@ -62,6 +72,8 @@ const Header = ({ value, toggle, authState }) => {
             </button>
           </div>
         )}
+
+        {isProfileDropDown && <ProfileDropDown />}
       </div>
     </div>
   );
