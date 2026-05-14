@@ -1,4 +1,4 @@
-const Header = ({ value, toggle }) => {
+const Header = ({ value, toggle, authState }) => {
   return (
     <div className="header absolute z-20 top-0 py-2 px-36 w-full flex justify-between items-center">
       <div className="left-section">
@@ -38,14 +38,22 @@ const Header = ({ value, toggle }) => {
             </select>
           </div>
         </div>
-        <div className="">
-          <button
-            onClick={toggle}
-            className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer"
-          >
-            {value ? "Home" : "Sign In"}
-          </button>
-        </div>
+        {authState ? (
+          <div>
+            <button className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer">
+              Log Out
+            </button>
+          </div>
+        ) : (
+          <div className="">
+            <button
+              onClick={toggle}
+              className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer"
+            >
+              {value ? "Home" : "Sign In"}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
