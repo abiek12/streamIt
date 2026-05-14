@@ -6,7 +6,6 @@ const Browse = () => {
   return (
     <div className="Browse">
       <Header authState={isAuthenticated} />
-      <h1 className="text-white">Browse Page</h1>
     </div>
   );
 };

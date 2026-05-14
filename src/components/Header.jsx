@@ -39,13 +39,18 @@ const Header = ({ value, toggle, authState }) => {
           </div>
         </div>
         {authState ? (
-          <div>
-            <button className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer">
-              Log Out
+          <div className="flex justify-center items-center">
+            <button className="w-10 h-10 cursor-pointer">
+              <img
+                className="w-full h-full"
+                src="/userProfile.jpg"
+                alt="User profile icon"
+                srcset=""
+              />
             </button>
           </div>
         ) : (
-          <div className="">
+          <div className="flex justify-center items-center">
             <button
               onClick={toggle}
               className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer"
