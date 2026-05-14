@@ -1,3 +1,5 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
+
 const Header = ({ value, toggle, authState }) => {
   return (
     <div className="header absolute z-20 top-0 py-2 px-36 w-full flex justify-between items-center">
@@ -9,7 +11,7 @@ const Header = ({ value, toggle, authState }) => {
           />
         </div>
       </div>
-      <div className="right-section flex justify-between items-center gap-2">
+      <div className="right-section flex justify-between items-center gap-3">
         <div className="lang bg-surface text-text-primary py-1 px-2 flex justify-between items-center gap-2 border border-solid border-text-muted cursor-pointer">
           <div className="">
             <svg
@@ -39,8 +41,8 @@ const Header = ({ value, toggle, authState }) => {
           </div>
         </div>
         {authState ? (
-          <div className="flex justify-center items-center">
-            <button className="w-10 h-10 cursor-pointer">
+          <div className="flex justify-center items-center gap-2 cursor-pointer">
+            <button className="w-9 h-9">
               <img
                 className="w-full h-full"
                 src="/userProfile.jpg"
@@ -48,6 +50,7 @@ const Header = ({ value, toggle, authState }) => {
                 srcset=""
               />
             </button>
+            <CaretDownIcon size={15} color="#ffffff" weight="fill" />
           </div>
         ) : (
           <div className="flex justify-center items-center">
