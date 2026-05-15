@@ -24,7 +24,7 @@ export const ProfileDropDown = () => {
     },
   ]);
 
-  handleLogout = async () => {
+  const handleLogout = async () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
@@ -83,7 +83,10 @@ export const ProfileDropDown = () => {
         </div>
       </div>
       <hr className="text-white mt-2" />
-      <button className="text-text-primary text-sm cursor-pointer">
+      <button
+        onClick={handleLogout}
+        className="text-text-primary text-sm cursor-pointer"
+      >
         Sign out
       </button>
     </div>
