@@ -37,10 +37,8 @@ const Auth = () => {
     if (isLogin) {
       // sign-in
       signInWithEmailAndPassword(auth, data.email, data.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("user:", user);
-          popupNotification(TOAST_TYPE.SUCCESS, "Logged in successfully!");
+        .then((user) => {
+          console.log("Login successfull!");
         })
         .catch((error) => {
           console.log("Error while sign-up:", error);
@@ -53,9 +51,7 @@ const Auth = () => {
       // sign-up
       createUserWithEmailAndPassword(auth, data.email, data.password)
         .then((userCred) => {
-          const user = userCred.user;
-          console.log("user:", user);
-          popupNotification(TOAST_TYPE.SUCCESS, "Registered successfully!");
+          console.log("Registered successfully!");
         })
         .catch((error) => {
           console.log("Error while sign-in:", error);
