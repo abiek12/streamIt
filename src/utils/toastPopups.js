@@ -5,6 +5,8 @@ export const popupNotification = (messageType, content) => {
     position: "top-center",
     theme: "dark",
     type: messageType,
+    hideProgressBar: true,
+    autoClose: 2000,
   });
 };
 
