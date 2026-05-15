@@ -7,8 +7,11 @@ import {
 import { signOut } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
 
 export const ProfileDropDown = () => {
+  const navigate = useNavigate();
   const [profiles, setProfiles] = useState([
     {
       id: 1,
@@ -28,9 +31,13 @@ export const ProfileDropDown = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        popupNotification(TOAST_TYPE.SUCCESS, "Signed out successfully!");
+        navigate("/");
       })
       .catch((error) => {
-        console.log("Error while sign out!");
+        console.log("Error while sign out!", error);
+        popupNotification(TOAST_TYPE.SUCCESS, "Error while signout!");
+        navigate("/error");
       });
   };
 

@@ -14,9 +14,9 @@ const Header = ({ value, toggle, authState }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       // if clicked outside
-      if (profileRef.current && !profileRef.current.contains(event.target)) {
-        setIsProfileDropDown(false);
-      }
+      // if (profileRef.current && !profileRef.current.contains(event.target)) {
+      //   setIsProfileDropDown(false);
+      // }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
