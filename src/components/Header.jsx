@@ -14,7 +14,6 @@ const Header = ({ value, toggle, authState }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       // if clicked outside
-      console.log("current:", profileRef.current);
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setIsProfileDropDown(false);
       }

@@ -4,7 +4,9 @@ import {
   UserIcon,
   UserSwitchIcon,
 } from "@phosphor-icons/react";
+import { signOut } from "firebase/auth";
 import { useState } from "react";
+import { auth } from "../utils/firebase";
 
 export const ProfileDropDown = () => {
   const [profiles, setProfiles] = useState([
@@ -21,6 +23,16 @@ export const ProfileDropDown = () => {
       name: "Ajay",
     },
   ]);
+
+  handleLogout = async () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        console.log("Error while sign out!");
+      });
+  };
 
   return (
     <div className="absolute top-14 bg-surface px-2 py-4 w-56 flex flex-col gap-2">
