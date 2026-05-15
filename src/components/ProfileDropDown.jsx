@@ -26,14 +26,9 @@ export const ProfileDropDown = () => {
     <div className="absolute top-14 bg-surface px-2 py-4 w-56 flex flex-col gap-2">
       <div className="proflie-container flex flex-col gap-2">
         {profiles.map((i) => (
-          <div className="flex items-center gap-2 cursor-pointer">
+          <div key={i.id} className="flex items-center gap-2 cursor-pointer">
             <div className="flex justify-center items-center w-9 h-9">
-              <img
-                className="w-full h-full"
-                src="/avatar.svg"
-                alt="avatar"
-                srcset=""
-              />
+              <img className="w-full h-full" src="/avatar.svg" alt="avatar" />
             </div>
             <div className="flex justify-center items-center text-text-primary text-sm">
               <p>{i.name}</p>

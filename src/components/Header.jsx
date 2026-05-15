@@ -1,12 +1,30 @@
 import { CaretDownIcon } from "@phosphor-icons/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ProfileDropDown } from "./ProfileDropDown";
 
 const Header = ({ value, toggle, authState }) => {
   const [isProfileDropDown, setIsProfileDropDown] = useState(false);
+
+  const profileRef = useRef(null);
+
   const toggleProfileDropDown = () => {
-    setIsProfileDropDown(!isProfileDropDown);
+    setIsProfileDropDown((prev) => !prev);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // if clicked outside
+      console.log("current:", profileRef.current);
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setIsProfileDropDown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="header absolute z-20 top-0 py-2 px-36 w-full flex justify-between items-center">
@@ -49,6 +67,7 @@ const Header = ({ value, toggle, authState }) => {
         </div>
         {authState ? (
           <div
+            ref={profileRef}
             onClick={toggleProfileDropDown}
             className="flex justify-center items-center gap-2 cursor-pointer"
           >
@@ -57,7 +76,6 @@ const Header = ({ value, toggle, authState }) => {
                 className="w-full h-full"
                 src="/userProfile.jpg"
                 alt="User profile icon"
-                srcset=""
               />
             </button>
             <CaretDownIcon size={15} color="#ffffff" weight="fill" />
