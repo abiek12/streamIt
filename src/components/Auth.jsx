@@ -39,6 +39,7 @@ const Auth = () => {
       signInWithEmailAndPassword(auth, data.email, data.password)
         .then((user) => {
           console.log("Login successfull!");
+          popupNotification(TOAST_TYPE.SUCCESS, "Logged in successfully!");
         })
         .catch((error) => {
           console.log("Error while sign-up:", error);
@@ -52,6 +53,7 @@ const Auth = () => {
       createUserWithEmailAndPassword(auth, data.email, data.password)
         .then((userCred) => {
           console.log("Registered successfully!");
+          popupNotification(TOAST_TYPE.SUCCESS, "Registered successfully!");
         })
         .catch((error) => {
           console.log("Error while sign-in:", error);
@@ -71,12 +73,11 @@ const Auth = () => {
   }, [isSubmitSuccessful, reset]);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
-        popupNotification(TOAST_TYPE.SUCCESS, "Logged in successfully!");
         navigate("/browse");
       } else {
         // User is signed out
@@ -84,6 +85,9 @@ const Auth = () => {
         navigate("/");
       }
     });
+
+    // cleanup
+    return () => unsubscribe();
   }, []);
 
   return (
