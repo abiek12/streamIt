@@ -1,15 +1,39 @@
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { ProfileDropDown } from "./ProfileDropDown";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addUser, removeUser } from "../stores/userSlice";
+import { auth } from "../utils/firebase";
 
 const Header = ({ value, toggle, authState }) => {
   const [isProfileDropDown, setIsProfileDropDown] = useState(false);
-
   const profileRef = useRef(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const toggleProfileDropDown = () => {
     setIsProfileDropDown((prev) => !prev);
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid, email, displayName }));
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+
+    // cleanup
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {

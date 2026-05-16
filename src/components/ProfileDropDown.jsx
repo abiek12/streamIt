@@ -32,7 +32,6 @@ export const ProfileDropDown = () => {
       .then(() => {
         // Sign-out successful.
         popupNotification(TOAST_TYPE.SUCCESS, "Log out successfully!");
-        navigate("/");
       })
       .catch((error) => {
         console.log("Error while sign out!", error);
