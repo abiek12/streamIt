@@ -13,13 +13,10 @@ const HeroSection = () => {
 
   if (!heroMovie) return null;
 
-  console.log("Now Playing Movie:", heroMovie);
-  console.log("Backdrop Images:", logo);
-
   return (
     <div>
-      <MovieTitle movie={nowPlayingMovie} />
-      <BackgroundTrailer movieId={nowPlayingMovie?.id} />
+      <MovieTitle movie={heroMovie} movieLogo={logo} />
+      <BackgroundTrailer movieId={heroMovie?.id} />
     </div>
   );
 };

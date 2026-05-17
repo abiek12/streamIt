@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "../utils/constants";
 
-const useMovieLogo = async (movieId) => {
+const useMovieLogo = (movieId) => {
   const [logo, setLogo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -17,13 +18,13 @@ const useMovieLogo = async (movieId) => {
         );
         const jsonData = await res.json();
         const movieLogo = jsonData?.logos?.find(
-          (logo) => logo.iso_639_1 === "en"
-        )[0];
+          (logo) => logo.iso_639_1 === "en" && logo.iso_3166_1 === "US"
+        );
 
         setLogo(movieLogo || null);
       } catch (error) {
-        setError(err);
-        console.log("Error fetching movie logo:", err);
+        setError(error);
+        console.log("Error fetching movie logo:", error);
       } finally {
         setLoading(false);
       }

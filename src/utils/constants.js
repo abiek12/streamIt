@@ -9,3 +9,30 @@ export const TMDB_API_OPTIONS = {
     Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`,
   },
 };
+
+// TMDB IMAGE SIZES
+export const TMDB_IMAGE_SIZES = {
+  POSTER: {
+    SMALL: "w92",
+    MEDIUM_SMALL: "w154",
+    MEDIUM: "w185",
+    LARGE: "w342",
+    XLARGE: "w500",
+    XXLARGE: "w780",
+    ORIGINAL: "original",
+  },
+
+  BACKDROP: {
+    SMALL: "w300",
+    MEDIUM: "w780",
+    LARGE: "w1280",
+    ORIGINAL: "original",
+  },
+
+  PROFILE: {
+    SMALL: "w45",
+    MEDIUM: "w185",
+    LARGE: "h632",
+    ORIGINAL: "original",
+  },
+};
