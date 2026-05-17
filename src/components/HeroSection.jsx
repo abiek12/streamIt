@@ -1,45 +1,20 @@
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
 import BackgroundTrailer from "./BackgroundTrailer";
 import MovieTitle from "./MovieTitle";
-
-import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "../utils/constants";
+import useMovieLogo from "../hooks/useMovieLogo";
 
 const HeroSection = () => {
-  const [movieImages, setMovieImages] = useState([]);
-
   const nowPlayingMovies = useSelector(
     (store) => store.movie?.nowPlayingMovies
   );
+  const heroMovie = nowPlayingMovies?.[0];
 
-  const nowPlayingMovie = nowPlayingMovies?.[0];
+  const { logo } = useMovieLogo(heroMovie?.id);
 
-  useEffect(() => {
-    if (!nowPlayingMovie?.id) return;
+  if (!heroMovie) return null;
 
-    const fetchMovieImages = async () => {
-      try {
-        const res = await fetch(
-          `${TMDB_BASE_URL}/movie/${nowPlayingMovie.id}/images?include_image_language=en-US,null`,
-          TMDB_API_OPTIONS
-        );
-
-        const jsonData = await res.json();
-
-        setMovieImages(jsonData?.logos || []);
-      } catch (error) {
-        console.log("Error while fetching movie images:", error);
-      }
-    };
-
-    fetchMovieImages();
-  }, [nowPlayingMovie]);
-
-  if (!nowPlayingMovies) return null;
-
-  console.log("Now Playing Movie:", nowPlayingMovie);
-  console.log("Backdrop Images:", movieImages);
+  console.log("Now Playing Movie:", heroMovie);
+  console.log("Backdrop Images:", logo);
 
   return (
     <div>
