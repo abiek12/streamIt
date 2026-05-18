@@ -14,7 +14,7 @@ const HeroSection = () => {
   if (!heroMovie) return null;
 
   return (
-    <div>
+    <div className="relative h-dvh">
       <MovieTitle movie={heroMovie} movieLogo={logo} />
       <BackgroundTrailer movieId={heroMovie?.id} />
     </div>
