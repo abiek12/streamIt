@@ -52,9 +52,9 @@ const Header = ({ value, toggle, authState }) => {
   return (
     <div className="header absolute z-20 top-0 py-8 px-36 w-full flex justify-between">
       <div className="left-section">
-        <div className="logo w-48 h-auto cursor-pointer">
+        <div className="logo w-40 h-auto cursor-pointer">
           <img
-            className="block w-full object-cover object-left"
+            className=""
             src="https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg?w=460"
             alt="Logo"
           />
