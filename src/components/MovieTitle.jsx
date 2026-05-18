@@ -4,7 +4,7 @@ const MovieTitle = (data) => {
   const { movie, movieLogo } = data;
   const logoUrl = `${TMDB_CDN_URL}/${TMDB_IMAGE_SIZES.POSTER.XLARGE}/${movieLogo?.file_path}`;
   return (
-    <div className="">
+    <div className="px-36">
       <div className="logo">
         <img src={logoUrl} alt="Movie title logo" />
       </div>
