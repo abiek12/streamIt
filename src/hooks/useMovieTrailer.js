@@ -17,11 +17,11 @@ const useMovieTrailer = (movieId) => {
           TMDB_API_OPTIONS
         );
         const jsonData = await res.json();
-        const finalData = jsonData?.results.map((i) => i.type === "trailer");
+        const fitleredData = jsonData?.results.find(
+          (i) => i.type === "Trailer"
+        );
 
-        console.log("finalkey:", finalData);
-
-        setVideoKey(finalData);
+        setVideoKey(fitleredData?.key);
       } catch (error) {
         setError(error);
         console.log("Error fetching movie logo:", error);
