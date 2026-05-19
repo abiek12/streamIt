@@ -11,7 +11,9 @@ const HeroSection = () => {
   const heroMovie = nowPlayingMovies?.[0];
 
   const { logo } = useMovieLogo(heroMovie?.id);
-  const { key } = useMovieTrailer(heroMovie?.id);
+  const { videoKey } = useMovieTrailer(heroMovie?.id);
+
+  console.log("key:", videoKey);
 
   if (!heroMovie) return null;
 
