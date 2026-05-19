@@ -20,7 +20,7 @@ const HeroSection = () => {
   return (
     <div className="relative h-dvh">
       <MovieTitle movie={heroMovie} movieLogo={logo} />
-      <BackgroundTrailer videoKey={key} />
+      <BackgroundTrailer videoKey={videoKey} />
     </div>
   );
 };
