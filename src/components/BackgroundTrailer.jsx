@@ -1,4 +1,5 @@
-const BackgroundTrailer = () => {
+const BackgroundTrailer = (props) => {
+  const { movieId } = props;
   return (
     <div>
       <h1>Background</h1>
