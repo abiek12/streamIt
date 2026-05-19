@@ -13,8 +13,6 @@ const HeroSection = () => {
   const { logo } = useMovieLogo(heroMovie?.id);
   const { videoKey } = useMovieTrailer(heroMovie?.id);
 
-  console.log("key:", videoKey);
-
   if (!heroMovie) return null;
 
   return (
