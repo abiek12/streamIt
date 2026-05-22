@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import HeroSection from "../components/HeroSection";
-import MovieList from "../components/MoiveList";
+import MovieListSection from "../components/MovieListSection";
 
 const Browse = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -12,7 +12,7 @@ const Browse = () => {
     <div className="Browse">
       <Header authState={isAuthenticated} />
       <HeroSection />
-      <MovieList />
+      <MovieListSection />
     </div>
   );
 };
