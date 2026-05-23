@@ -1,28 +1,28 @@
 import { useDispatch } from "react-redux";
 import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
-import { addNowPlayingMovies } from "../stores/movieSllice";
+import { addUpComingMovies } from "../stores/movieSllice";
 
-const usePopularMovies = () => {
+const useUpComingMovies = () => {
   const dispatch = useDispatch();
 
-  const fetchPopularMovies = async () => {
+  const fetchUpComingMovies = async () => {
     try {
       const res = await fetch(
-        `${TMDB_BASE_URL}/movie/popular?page=1`,
+        `${TMDB_BASE_URL}/movie/upcoming?page=1`,
         TMDB_API_OPTIONS
       );
       const jsonData = await res.json();
 
-      dispatch(addNowPlayingMovies(jsonData.results));
+      dispatch(addUpComingMovies(jsonData.results));
     } catch (error) {
-      console.log("Error while fetch popular movies:", error);
+      console.log("Error while fetch upcoming movies:", error);
     }
   };
 
   useEffect(() => {
-    fetchPopularMovies();
+    fetchUpComingMovies();
   }, []);
 };
 
-export default usePopularMovies;
+export default useUpComingMovies;

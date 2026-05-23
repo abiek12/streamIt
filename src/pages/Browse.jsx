@@ -6,12 +6,14 @@ import MovieListSection from "../components/MovieListSection";
 import Footer from "../components/Footer";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
+import useUpComingMovies from "../hooks/useUpComingMovies";
 
 const Browse = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
+  useUpComingMovies();
 
   return (
     <div className="Browse">

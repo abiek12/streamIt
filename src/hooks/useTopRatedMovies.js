@@ -16,7 +16,7 @@ const useTopRatedMovies = () => {
 
       dispatch(addTopRatedMovies(jsonData.results));
     } catch (error) {
-      console.log("Error while fetch now playing movies:", error);
+      console.log("Error while fetch top rated movies:", error);
     }
   };
 
