@@ -63,16 +63,29 @@ const Header = ({ value, toggle, authState }) => {
       </div>
       <div className="relative right-section flex justify-between items-center gap-3">
         {authState && (
-          <div className="">
-            <button
-              data-tooltip-id="ai-search-btn"
-              data-tooltip-content={
-                "Search your queries with AI powered search"
-              }
-              className="text-white border border-solid border-white px-6 py-1 cursor-pointer"
-            >
-              Search
-            </button>
+          <div className="relative w-fit">
+            {/* Glow container */}
+            <div className="relative overflow-hidden p-0.5">
+              {/* Rotating glow */}
+              <div
+                className="absolute inset-[-1000%] animate-spin-slow pointer-events-none"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, #3b0000, #E50914, #5c0000, #3b0000)",
+                }}
+              />
+
+              {/* Button */}
+              <button
+                data-tooltip-id="ai-search-btn"
+                data-tooltip-content="Search your queries with AI powered search"
+                className="relative z-10 bg-black px-6 py-1.5 text-white text-sm transition-all duration-300 cursor-pointer"
+              >
+                Search
+              </button>
+            </div>
+
+            {/* Tooltip OUTSIDE overflow-hidden */}
             <Tooltip id="ai-search-btn" />
           </div>
         )}
