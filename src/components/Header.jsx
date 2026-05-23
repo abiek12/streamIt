@@ -85,7 +85,6 @@ const Header = ({ value, toggle, authState }) => {
               </button>
             </div>
 
-            {/* Tooltip OUTSIDE overflow-hidden */}
             <Tooltip id="ai-search-btn" />
           </div>
         )}
