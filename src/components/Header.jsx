@@ -61,6 +61,13 @@ const Header = ({ value, toggle, authState }) => {
         </div>
       </div>
       <div className="relative right-section flex justify-between items-center gap-3">
+        {authState && (
+          <div className="">
+            <button className="text-white border border-solid border-white px-6 py-1 cursor-pointer">
+              Search
+            </button>
+          </div>
+        )}
         <div className="lang bg-surface text-text-primary py-1 px-2 flex justify-between items-center gap-2 border border-solid border-text-muted cursor-pointer">
           <div className="">
             <svg
