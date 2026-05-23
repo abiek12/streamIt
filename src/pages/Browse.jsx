@@ -13,7 +13,9 @@ const Browse = () => {
     <div className="Browse">
       <Header authState={isAuthenticated} />
       <HeroSection />
-      <MovieListSection />
+      <div className="relative z-20 -mt-78 mb-12">
+        <MovieListSection />
+      </div>
       <Footer />
     </div>
   );

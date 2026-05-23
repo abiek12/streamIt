@@ -11,7 +11,7 @@ const HeroSection = () => {
     (store) => store.movie?.nowPlayingMovies
   );
 
-  const heroMovie = nowPlayingMovies?.[0];
+  const heroMovie = nowPlayingMovies?.[2];
 
   const { logo } = useMovieLogo(heroMovie?.id);
   const { videoKey } = useMovieTrailer(heroMovie?.id);
@@ -19,7 +19,7 @@ const HeroSection = () => {
   if (!heroMovie) return null;
 
   return (
-    <section className="relative h-dvh overflow-hidden bg-black">
+    <section className="relative min-h-screen pb-20 overflow-hidden bg-black">
       <BackgroundTrailer videoKey={videoKey} />
 
       {/* Left cinematic overlay */}
