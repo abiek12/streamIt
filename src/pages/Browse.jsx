@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import HeroSection from "../components/HeroSection";
 import MovieListSection from "../components/MovieListSection";
+import Footer from "../components/Footer";
 
 const Browse = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -13,6 +14,7 @@ const Browse = () => {
       <Header authState={isAuthenticated} />
       <HeroSection />
       <MovieListSection />
+      <Footer />
     </div>
   );
 };
