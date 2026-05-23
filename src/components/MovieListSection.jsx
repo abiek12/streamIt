@@ -5,7 +5,7 @@ const MovieListSection = () => {
   const movies = useSelector((store) => store.movie);
 
   return (
-    <div>
+    <div className="pl-36">
       <MovieList title={"Now Playing"} movies={movies?.nowPlayingMovies} />
     </div>
   );

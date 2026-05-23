@@ -11,11 +11,11 @@ const MovieTitle = (data) => {
       </div>
       <div className="desc text-white">{movie?.overview}</div>
       <div className="flex gap-4">
-        <div className="play px-6 py-2 bg-white flex gap-2 justify-center items-center rounded-sm cursor-pointer">
-          <PlayIcon size={24} weight="fill" />
+        <div className="play px-6 py-2 bg-white flex gap-2 justify-center items-center rounded-sm cursor-pointer hover:bg-white/80 transition-transform ease-in-out duration-300 hover:scale-102">
+          <PlayIcon size={22} weight="fill" />
           <p>Play</p>
         </div>
-        <div className="px-6 py-2 flex gap-2 justify-center items-center rounded-sm cursor-pointer bg-text-muted/40 text-white">
+        <div className="px-6 py-2 flex gap-2 justify-center items-center rounded-sm cursor-pointer bg-text-muted/40 text-white hover:bg-text-muted/60 transition-transform ease-in-out duration-300 hover:scale-102">
           <InfoIcon size={24} color="#ffffff" weight="thin" />
           <p>More Info</p>
         </div>
