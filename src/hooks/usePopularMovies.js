@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
+import { addNowPlayingMovies } from "../stores/movieSllice";
 
 const usePopularMovies = () => {
   const dispatch = useDispatch();
@@ -8,7 +9,7 @@ const usePopularMovies = () => {
   const fetchPopularMovies = async () => {
     try {
       const res = await fetch(
-        `${TMDB_BASE_URL}/movie/now_playing?page=1`,
+        `${TMDB_BASE_URL}/movie/popular?page=1`,
         TMDB_API_OPTIONS
       );
       const jsonData = await res.json();

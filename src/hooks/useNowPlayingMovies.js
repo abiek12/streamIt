@@ -9,7 +9,7 @@ const useNowPlayingMovies = () => {
   const fetchNowPlayingMovies = async () => {
     try {
       const res = await fetch(
-        `${TMDB_BASE_URL}/movie/popular?page=1`,
+        `${TMDB_BASE_URL}/movie/now_playing?page=1`,
         TMDB_API_OPTIONS
       );
       const jsonData = await res.json();
