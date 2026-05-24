@@ -8,7 +8,13 @@ import { addUser, removeUser } from "../stores/userSlice";
 import { auth } from "../utils/firebase";
 import { Tooltip } from "react-tooltip";
 
-const Header = ({ value, toggle, authState }) => {
+const Header = ({
+  value,
+  toggle,
+  authState,
+  gptSearchValue,
+  gptSearchToggle,
+}) => {
   const [isProfileDropDown, setIsProfileDropDown] = useState(false);
   const profileRef = useRef(null);
   const dispatch = useDispatch();
@@ -62,7 +68,7 @@ const Header = ({ value, toggle, authState }) => {
         </div>
       </div>
       <div className="relative right-section flex justify-between items-center gap-3">
-        {authState && (
+        {authState && !gptSearchValue && (
           <div className="relative w-fit">
             {/* Glow container */}
             <div className="relative overflow-hidden p-0.5">
@@ -79,6 +85,7 @@ const Header = ({ value, toggle, authState }) => {
               <button
                 data-tooltip-id="ai-search-btn"
                 data-tooltip-content="Search your queries with AI powered search"
+                onClick={gptSearchToggle}
                 className="relative z-10 bg-black px-6 py-1.5 text-white text-sm transition-all duration-300 cursor-pointer"
               >
                 Search
@@ -88,6 +95,16 @@ const Header = ({ value, toggle, authState }) => {
             <Tooltip id="ai-search-btn" />
           </div>
         )}
+
+        {authState && gptSearchValue && (
+          <button
+            onClick={gptSearchToggle}
+            className="relative z-10 bg-black px-6 py-1.5 text-white text-sm transition-all duration-300 cursor-pointer border border-solid border-white"
+          >
+            Home
+          </button>
+        )}
+
         <div className="lang bg-surface text-text-primary py-1 px-2 flex justify-between items-center gap-2 border border-solid border-text-muted cursor-pointer">
           <div className="">
             <svg
@@ -116,6 +133,7 @@ const Header = ({ value, toggle, authState }) => {
             </select>
           </div>
         </div>
+
         {authState ? (
           <div
             ref={profileRef}
