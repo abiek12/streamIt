@@ -21,8 +21,6 @@ const Browse = () => {
     setIsGptSearch(!isGptSearch);
   };
 
-  console.log(isGptSearch);
-
   return (
     <div className="Browse">
       <Header
