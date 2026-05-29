@@ -25,7 +25,6 @@ const LanguageSelector = () => {
         <select className="" name="LanguageSelect" id="">
           <option value="en">English</option>
           <option value="hi">हिन्दी</option>
-          <option value="ml">മലയാളം</option>
         </select>
       </div>
     </div>
