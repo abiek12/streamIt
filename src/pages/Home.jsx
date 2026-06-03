@@ -6,9 +6,11 @@ import TrendingItems from "../components/TrendingItems";
 import Benefits from "../components/Benefits";
 import Faq from "../components/Faq";
 import Auth from "../components/Auth";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const [isAuthScreen, setIsAuthScreen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleScreen = () => {
     setIsAuthScreen(!isAuthScreen);
@@ -32,7 +34,7 @@ const Home = () => {
             <div className="content absolute top-7/12 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
               <div className="flex flex-col gap-4 items-center justify-center mb-8">
                 <h1 className="text-6xl font-extrabold leading-18">
-                  Unlimited movies, shows, and more
+                  {t("welcomeMessage")}
                 </h1>
                 <h4 className="text-xl font-bold">
                   Starts at ₹149. Cancel at any time.
