@@ -3,12 +3,12 @@ import { initReactI18next } from "react-i18next";
 
 const resources = {
   en: {
-    tranlation: {
+    translation: {
       welcomeMessage: "Hey Abhishek welcome to streamIt",
     },
   },
   hi: {
-    tranlation: {
+    translation: {
       welcomeMessage: "हे अभिषेक, स्ट्रीमइट में आपका स्वागत है।",
     },
   },
@@ -20,7 +20,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    lng: "en",
+    lng: "hi",
     debug: true,
 
     interpolation: {
