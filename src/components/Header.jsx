@@ -91,7 +91,7 @@ const Header = ({
                 onClick={gptSearchToggle}
                 className="relative z-10 bg-black px-6 py-1.5 text-white text-sm transition-all duration-300 cursor-pointer"
               >
-                Search
+                {t("header.searchButton")}
               </button>
             </div>
 
@@ -104,7 +104,7 @@ const Header = ({
             onClick={gptSearchToggle}
             className="relative z-10 bg-black px-6 py-1.5 text-white text-sm transition-all duration-300 cursor-pointer border border-solid border-white"
           >
-            Home
+            {t("header.homeButton")}
           </button>
         )}
 
