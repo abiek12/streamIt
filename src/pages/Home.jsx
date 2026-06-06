@@ -34,22 +34,19 @@ const Home = () => {
             <div className="content absolute top-7/12 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 z-10 w-xl text-center">
               <div className="flex flex-col gap-4 items-center justify-center mb-8">
                 <h1 className="text-6xl font-extrabold leading-18">
-                  Unlimited movies, shows, and more
+                  {t("home.hero.title")}
                 </h1>
-                <h4 className="text-xl font-bold">
-                  Starts at ₹149. Cancel at any time.
-                </h4>
+                <h4 className="text-xl font-bold">{t("home.hero.subTitle")}</h4>
               </div>
               <div className="flex flex-col gap-4 items-center justify-center">
-                <h4 className="font-normal">
-                  Ready to watch? Enter your email to create or restart your
-                  membership.
-                </h4>
+                <h4 className="font-normal">{t("home.hero.description")}</h4>
                 <button
                   onClick={toggleScreen}
                   className="bg-primary hover:bg-primary-dark flex items-center justify-evenly gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-1"
                 >
-                  <h3 className="text-2xl font-semibold">Get Started</h3>
+                  <h3 className="text-2xl font-semibold">
+                    {t("home.hero.getStartedButton")}
+                  </h3>
                   <CaretRightIcon size={24} color="#ffffff" />
                 </button>
                 {/* <form
@@ -164,10 +161,7 @@ const Home = () => {
           <Faq />
           <div className="w-full flex justify-center">
             <div className="flex flex-col gap-4 items-center justify-center w-3xl">
-              <h4 className="font-normal">
-                Ready to watch? Enter your email to create or restart your
-                membership.
-              </h4>
+              <h4 className="font-normal">{t("home.hero.description")}</h4>
               <div className="flex w-full gap-2 justify-between items-center">
                 <input
                   className="border border-solid border-text-muted bg-surface/80 p-3 rounded-sm h-14 w-3/5 flex-1"
