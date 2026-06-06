@@ -5,7 +5,9 @@ import "./utils/i18n";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
-  <App />
-  // </StrictMode>
+  <StrictMode>
+    <Suspense fallback={<div>Loading translations...</div>}>
+      <App />
+    </Suspense>
+  </StrictMode>
 );

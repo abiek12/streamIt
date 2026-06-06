@@ -14,6 +14,8 @@ const resources = {
   },
 };
 
+export const supportedLanguages = ["en", "hi"];
+
 i18n
   .use(initReactI18next)
   // init i18next
