@@ -6,9 +6,11 @@ import TrendingItems from "../components/TrendingItems";
 import Benefits from "../components/Benefits";
 import Faq from "../components/Faq";
 import Auth from "../components/Auth";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const [isAuthScreen, setIsAuthScreen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleScreen = () => {
     setIsAuthScreen(!isAuthScreen);

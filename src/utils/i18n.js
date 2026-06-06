@@ -1,30 +1,34 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-
-const resources = {
-  en: {
-    translation: {
-      welcomeMessage: "Hey Abhishek welcome to streamIt",
-    },
-  },
-  hi: {
-    translation: {
-      welcomeMessage: "हे अभिषेक, स्ट्रीमइट में आपका स्वागत है।",
-    },
-  },
-};
+import Backend from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 export const supportedLanguages = ["en", "hi"];
 
 i18n
+  .use(Backend)
+  .use(LanguageDetector)
   .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    resources,
-    lng: "hi",
-    fallbackLng: "en",
     debug: true,
+
+    lng: "en",
+    fallbackLng: "en",
+    supportedLngs: supportedLanguages,
+
+    ns: ["translation"],
+    defaultNS: "translation",
+
+    load: "languageOnly",
+
+    backend: {
+      laodPath: "/locales/{{lng}}/{{ns}}.json",
+    },
+
+    detection: {
+      order: ["localStorage", "navigator", "htmlTag"],
+      caches: ["localStorage"],
+    },
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

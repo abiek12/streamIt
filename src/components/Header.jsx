@@ -8,6 +8,7 @@ import { addUser, removeUser } from "../stores/userSlice";
 import { auth } from "../utils/firebase";
 import { Tooltip } from "react-tooltip";
 import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 const Header = ({
   value,
@@ -20,6 +21,7 @@ const Header = ({
   const profileRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const toggleProfileDropDown = () => {
     setIsProfileDropDown((prev) => !prev);
@@ -129,7 +131,7 @@ const Header = ({
               onClick={toggle}
               className="text-text-primary bg-primary px-4 py-1 rounded-sm cursor-pointer"
             >
-              {value ? "Home" : "Sign In"}
+              {value ? t("header.homeButton") : t("header.signInButton")}
             </button>
           </div>
         )}
