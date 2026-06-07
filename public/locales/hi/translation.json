@@ -78,6 +78,7 @@
     },
     "signUp": {
       "title": "अभी साइन अप करें",
+      "usernameLabel": "यूज़रनेम",
       "alreadyHaveAccount": "पहले से ही एक अकाउंट है? ",
       "signInNow": "अभी साइन इन करें"
     },

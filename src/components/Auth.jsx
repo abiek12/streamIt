@@ -8,11 +8,13 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
+import { useTranslation } from "react-i18next";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const currentSchema = isLogin ? loginSchema : registerSchema;
+  const { t } = useTranslation();
 
   const {
     register,
@@ -70,7 +72,7 @@ const Auth = () => {
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 w-full max-w-md p-16 rounded-md flex flex-col gap-4">
       <h1 className="text-3xl font-bold w-full mb-6">
-        {isLogin ? "Sign In" : "Sign Up"}
+        {isLogin ? t("auth.signIn.title") : t("auth.signUp.title")}
       </h1>
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
@@ -82,7 +84,7 @@ const Auth = () => {
           <div className="w-full flex flex-col gap-2">
             <input
               type="text"
-              placeholder="Username"
+              placeholder={t("auth.signUp.usernameLabel")}
               className="w-full bg-surface-2 p-4 rounded-sm"
               {...register("userName")}
             />
@@ -94,7 +96,7 @@ const Auth = () => {
         <div className="w-full flex flex-col gap-2">
           <input
             type="text"
-            placeholder="Email or phone number"
+            placeholder={t("auth.common.emailLabel")}
             className="w-full bg-surface-2 p-4 rounded-sm"
             {...register("email")}
           />
@@ -105,7 +107,7 @@ const Auth = () => {
         <div className="w-full flex flex-col gap-2">
           <input
             type="text"
-            placeholder="Password"
+            placeholder={t("auth.common.passwordLabel")}
             className="w-full bg-surface-2 p-4 rounded-sm"
             {...register("password")}
           />
@@ -121,9 +123,9 @@ const Auth = () => {
           {isLoading ? (
             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
           ) : isLogin ? (
-            "Sign In"
+            t("auth.signIn.title")
           ) : (
-            "Sign Up"
+            t("auth.signUp.title")
           )}
         </button>
       </form>
@@ -135,16 +137,20 @@ const Auth = () => {
             id="remember"
             className="cursor-pointer"
           />
-          <label htmlFor="remember">Remember me</label>
+          <label htmlFor="remember">{t("auth.common.rememberMe")}</label>
         </div>
-        <div className="cursor-pointer hover:underline">Need help?</div>
+        <div className="cursor-pointer hover:underline">
+          {t("auth.common.needHelp")}
+        </div>
       </div>
       <div className="sign-up-call-to-action flex gap-2 text-sm">
         <span className="text-text-muted">
-          {isLogin ? "New to Netflix?" : "Already registered?"}
+          {isLogin
+            ? t("auth.signIn.newToNetflix")
+            : t("auth.signUp.alreadyHaveAccount")}
         </span>
         <button className="cursor-pointer hover:underline" onClick={toggleAuth}>
-          {isLogin ? "Sign up now." : "Sign in now."}
+          {isLogin ? t("auth.signIn.signUpNow") : t("auth.signUp.signInNow")}
         </button>
       </div>
     </div>
