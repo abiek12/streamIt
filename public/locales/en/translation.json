@@ -70,6 +70,25 @@
     "title": "Browser Compatibility",
     "description": "Our website is compatible with the latest versions of major browsers including Chrome, Firefox, Safari, and Edge. For the best experience, we recommend using the latest version of your preferred browser."
   },
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "newToNetflix": "New to Netflix? ",
+      "signUpNow": "Sign up now."
+    },
+    "signUp": {
+      "title": "Sign Up",
+      "usernameLabel": "Username",
+      "alreadyHaveAccount": "Already have an account? ",
+      "signInNow": "Sign in now."
+    },
+    "common": {
+      "emailLabel": "Email or phone number",
+      "passwordLabel": "Password",
+      "rememberMe": "Remember me",
+      "needHelp": "Need help?"
+    }
+  },
   "footer": {
     "questions": "Questions? Call <phone>000-800-919-1743</phone>",
     "links": {
