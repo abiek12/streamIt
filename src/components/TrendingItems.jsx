@@ -1,13 +1,17 @@
 import { TRENDING_DUMMY } from "../utils/dummyData";
 import { CDN_URL } from "../utils/constants";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const TrendingItems = () => {
   const [trendingItems, setTrendingItems] = useState(TRENDING_DUMMY);
+  const { t } = useTranslation();
 
   return (
     <div className="trending-now">
-      <h1 className="text-2xl font-semibold">Trending Now</h1>
+      <h1 className="text-2xl font-semibold">
+        {t("home.movieLists.trending")}
+      </h1>
       <ul className="flex gap-2 w-full overflow-x-auto overflow-y-hidden no-scrollbar px-1">
         {trendingItems.map((item, idx) => (
           <li

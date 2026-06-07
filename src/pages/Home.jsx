@@ -170,7 +170,9 @@ const Home = () => {
                 />
                 <button className="bg-primary hover:bg-primary-dark flex items-center justify-evenly gap-2 p-3 px-6 h-14 rounded-sm cursor-pointer flex-none">
                   <div className="">
-                    <h3 className="text-2xl font-semibold">Get Started</h3>
+                    <h3 className="text-2xl font-semibold">
+                      {t("home.hero.getStartedButton")}
+                    </h3>
                   </div>
                   <div className="">
                     <CaretRightIcon size={24} color="#ffffff" />

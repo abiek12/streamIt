@@ -1,16 +1,20 @@
+import { useTranslation } from "react-i18next";
+
 const Benefits = () => {
+  const { t } = useTranslation();
   return (
     <div className="more-benifits">
-      <h1 className="text-2xl font-semibold mb-4">More reasons to join</h1>
+      <h1 className="text-2xl font-semibold mb-4">
+        {t("home.benefits.title")}
+      </h1>
       <div className="cards grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
-              Enjoy on your TV
+              {t("home.benefits.first.title")}
             </div>
             <p className="text-text-secondary">
-              Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV,
-              Blu-ray players and more.
+              {t("home.benefits.first.description")}
             </p>
           </div>
           <div className="flex justify-end">
@@ -138,10 +142,10 @@ const Benefits = () => {
         <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
-              Download your shows to watch offline
+              {t("home.benefits.second.title")}
             </div>
             <p className="text-text-secondary">
-              Save your favourites easily and always have something to watch.
+              {t("home.benefits.second.description")}
             </p>
           </div>
           <div className="flex justify-end">
@@ -289,11 +293,10 @@ const Benefits = () => {
         <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
-              Watch everywhere
+              {t("home.benefits.third.title")}
             </div>
             <p className="text-text-secondary">
-              Stream unlimited movies and TV shows on your phone, tablet,
-              laptop, and TV.
+              {t("home.benefits.third.description")}
             </p>
           </div>
           <div className="flex justify-end">
@@ -469,11 +472,10 @@ const Benefits = () => {
         <div className="flex justify-between flex-col gap-16 p-6 rounded-2xl bg-[linear-gradient(149deg,#192247_0%,#210e17_96.86%)]">
           <div className="flex flex-col gap-4">
             <div className="headings text-2xl font-semibold">
-              Create profiles for kids
+              {t("home.benefits.fourth.title")}
             </div>
             <p className="text-text-secondary">
-              Send kids on adventures with their favourite characters in a space
-              made just for them — free with your membership.
+              {t("home.benefits.fourth.description")}
             </p>
           </div>
           <div className="flex justify-end">
