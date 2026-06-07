@@ -1,34 +1,47 @@
+import { Trans, useTranslation } from "react-i18next";
+
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <div className="footer px-36 py-24 text-text-secondary flex flex-col gap-8">
       <div className="w-full">
         <p>
-          Questions? Call{" "}
-          <span className="underline cursor-pointer">000-800-919-1743</span>
+          <Trans
+            i18nKey="footer.questions"
+            components={{
+              phone: <span className="underline cursor-pointer" />,
+            }}
+          />
         </p>
       </div>
       <div className="">
         <ul className="underline text-sm flex flex-col flex-wrap gap-3 h-36">
-          <li className="cursor-pointer">FAQ</li>
-          <li className="cursor-pointer">Investor Relations</li>
-          <li className="cursor-pointer">Privacy</li>
+          <li className="cursor-pointer">{t("footer.links.faq")}</li>
           <li className="cursor-pointer">
-            <a href="https://fast.com/">Speed Test</a>
+            {t("footer.links.investorRelations")}
+          </li>
+          <li className="cursor-pointer">{t("footer.links.privacy")}</li>
+          <li className="cursor-pointer">
+            <a href="https://fast.com/">{t("footer.links.speedTest")}</a>
           </li>
 
-          <li className="cursor-pointer">Help Centre</li>
-          <li className="cursor-pointer">Jobs</li>
-          <li className="cursor-pointer">Cookie Preferences</li>
-          <li className="cursor-pointer">Legal Notices</li>
+          <li className="cursor-pointer">{t("footer.links.helpCenter")}</li>
+          <li className="cursor-pointer">{t("footer.links.jobs")}</li>
+          <li className="cursor-pointer">
+            {t("footer.links.cookiePreferences")}
+          </li>
+          <li className="cursor-pointer">{t("footer.links.legalNotices")}</li>
 
-          <li className="cursor-pointer">Account</li>
-          <li className="cursor-pointer">Ways to Watch</li>
-          <li className="cursor-pointer">Corporate Information</li>
-          <li className="cursor-pointer">Only on Netflix</li>
+          <li className="cursor-pointer">{t("footer.links.account")}</li>
+          <li className="cursor-pointer">{t("footer.links.waysToWatch")}</li>
+          <li className="cursor-pointer">
+            {t("footer.links.corporateInformation")}
+          </li>
+          <li className="cursor-pointer">{t("footer.links.onlyOnNetflix")}</li>
 
-          <li className="cursor-pointer">Media Centre</li>
-          <li className="cursor-pointer">Terms of Use</li>
-          <li className="cursor-pointer">Contact Us</li>
+          <li className="cursor-pointer">{t("footer.links.mediaCenter")}</li>
+          <li className="cursor-pointer">{t("footer.links.termsOfUse")}</li>
+          <li className="cursor-pointer">{t("footer.links.contactUs")}</li>
         </ul>
       </div>
       <div className="w-32">
