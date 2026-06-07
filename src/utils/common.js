@@ -1,3 +1,5 @@
+import { languages } from "../i18n/languages";
+
 export const movieCategoryTitles = (key) => {
   switch (key) {
     case "nowPlayingMovies":
@@ -15,4 +17,8 @@ export const movieCategoryTitles = (key) => {
     default:
       return "Other";
   }
+};
+
+export const returnLangLabel = (code) => {
+  return languages.filter((i) => i.code === code).map((i) => i.label);
 };

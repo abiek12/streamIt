@@ -1,4 +1,14 @@
+import { useTranslation } from "react-i18next";
+import { languages } from "../i18n/languages";
+import { returnLangLabel } from "../utils/common";
+
 const LanguageSelector = () => {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.resolvedLanguage ?? i18n.language;
+
+  const handleLanguageChange = async (langCode) => {
+    await i18n.changeLanguage(langCode);
+  };
   return (
     <div className="lang bg-surface text-text-primary py-1 px-2 flex justify-between items-center gap-2 border border-solid border-text-muted cursor-pointer">
       <div className="">
@@ -22,9 +32,20 @@ const LanguageSelector = () => {
         </svg>
       </div>
       <div className="">
-        <select className="" name="LanguageSelect" id="">
-          <option value="en">English</option>
-          <option value="hi">हिन्दी</option>
+        <select
+          className=""
+          name="LanguageSelect"
+          id=""
+          value={currentLanguage}
+          onChange={(e) => handleLanguageChange(e.target.value)}
+        >
+          {languages.map((i) => {
+            return (
+              <option key={i.code} value={i.code}>
+                {i.label}
+              </option>
+            );
+          })}
         </select>
       </div>
     </div>
