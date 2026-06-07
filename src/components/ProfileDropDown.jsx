@@ -9,9 +9,11 @@ import { useState } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
+import { useTranslation } from "react-i18next";
 
 export const ProfileDropDown = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [profiles, setProfiles] = useState([
     {
       id: 1,
@@ -60,7 +62,7 @@ export const ProfileDropDown = () => {
             <PencilIcon size={28} color="#ffffff" />
           </div>
           <div className="flex justify-center items-center text-text-primary text-sm">
-            <p>Manage Profiles</p>
+            <p>{t("header.profileOptions.manageProfile")}</p>
           </div>
         </div>
         <div className="flex items-center gap-2 cursor-pointer">
@@ -68,7 +70,7 @@ export const ProfileDropDown = () => {
             <UserSwitchIcon size={28} color="#ffffff" />
           </div>
           <div className="flex justify-center items-center text-text-primary text-sm">
-            <p>Transfer Profiles</p>
+            <p>{t("header.profileOptions.transferProfile")}</p>
           </div>
         </div>
         <div className="flex items-center gap-2 cursor-pointer">
@@ -76,7 +78,7 @@ export const ProfileDropDown = () => {
             <UserIcon size={28} color="#ffffff" />
           </div>
           <div className="flex justify-center items-center text-text-primary text-sm">
-            <p>Account</p>
+            <p>{t("header.profileOptions.account")}</p>
           </div>
         </div>
         <div className="flex items-center gap-2 cursor-pointer">
@@ -84,7 +86,7 @@ export const ProfileDropDown = () => {
             <QuestionIcon size={28} color="#ffffff" />
           </div>
           <div className="flex justify-center items-center text-text-primary text-sm">
-            <p>Help Center</p>
+            <p>{t("header.profileOptions.helpCenter")}</p>
           </div>
         </div>
       </div>
@@ -93,7 +95,7 @@ export const ProfileDropDown = () => {
         onClick={handleLogout}
         className="text-text-primary text-sm cursor-pointer"
       >
-        Sign out
+        {t("header.profileOptions.signOut")}
       </button>
     </div>
   );

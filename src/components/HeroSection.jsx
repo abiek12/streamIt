@@ -11,7 +11,7 @@ const HeroSection = () => {
     (store) => store.movie?.nowPlayingMovies
   );
 
-  const heroMovie = nowPlayingMovies?.[2];
+  const heroMovie = nowPlayingMovies?.[0];
 
   const { logo } = useMovieLogo(heroMovie?.id);
   const { videoKey } = useMovieTrailer(heroMovie?.id);
