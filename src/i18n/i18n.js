@@ -11,7 +11,7 @@ i18n
   .init({
     debug: true,
 
-    lng: "hi",
+    lng: "en",
     fallbackLng: "en",
     supportedLngs: supportedLanguages,
 
