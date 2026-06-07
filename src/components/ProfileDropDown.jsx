@@ -43,7 +43,7 @@ export const ProfileDropDown = () => {
   };
 
   return (
-    <div className="absolute top-14 bg-surface px-2 py-4 w-56 flex flex-col gap-2">
+    <div className="absolute top-14 right-0 bg-surface px-2 py-4 w-56 flex flex-col gap-2">
       <div className="proflie-container flex flex-col gap-2">
         {profiles.map((i) => (
           <div key={i.id} className="flex items-center gap-2 cursor-pointer">
