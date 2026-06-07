@@ -1,46 +1,48 @@
 import { PlusIcon, XIcon } from "@phosphor-icons/react";
-import { FAQ_DUMMY } from "../utils/dummyData";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Faq = () => {
-  const [faq, setFaq] = useState(FAQ_DUMMY);
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const { t } = useTranslation();
+
+  const faqItems = t("home.faq.items", {
+    returnObjects: true,
+  });
 
   const toggleItem = (index) => {
-    const updatedFaq = faq.map((item, idx) => ({
-      ...item,
-      state: idx === index ? !item.state : false,
-    }));
-
-    setFaq(updatedFaq);
+    setActiveIndex((prev) => (prev === index ? null : index));
   };
 
   return (
     <div className="faq">
-      <h1 className="text-2xl font-semibold mb-4">
-        Frequently Asked Questions
-      </h1>
-      <div className="">
-        {
-          <ul className="flex flex-col gap-2">
-            {faq.map((i, idx) => (
-              <div key={idx} className="flex flex-col">
-                <button onClick={() => toggleItem(idx)}>
-                  <li className="px-6 py-7 bg-surface-2 text-2xl cursor-pointer hover:bg-border flex justify-between items-center">
-                    {i.question}
-                    {i.state ? <XIcon size={32} /> : <PlusIcon size={32} />}
-                  </li>
-                </button>
+      <h1 className="text-2xl font-semibold mb-4">{t("home.faq.title")}</h1>
 
-                {i.state && (
-                  <div className="px-6 py-7 cursor-default bg-surface-2 text-xl">
-                    <p>{i.answer}</p>
-                  </div>
-                )}
+      <ul className="flex flex-col gap-2">
+        {faqItems.map((item, idx) => (
+          <li key={idx}>
+            <button
+              onClick={() => toggleItem(idx)}
+              className="w-full px-6 py-7 bg-surface-2 text-2xl hover:bg-border flex justify-between items-center"
+            >
+              {item.question}
+
+              {activeIndex === idx ? (
+                <XIcon size={32} />
+              ) : (
+                <PlusIcon size={32} />
+              )}
+            </button>
+
+            {activeIndex === idx && (
+              <div className="px-6 py-7 bg-surface-2 text-xl">
+                <p>{item.answer}</p>
               </div>
-            ))}
-          </ul>
-        }
-      </div>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
