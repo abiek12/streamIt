@@ -36,8 +36,3 @@ export const TMDB_IMAGE_SIZES = {
     ORIGINAL: "original",
   },
 };
-
-export const LANGUAGES = {
-  ENGLISH: "en",
-  HINDI: "hi",
-};
