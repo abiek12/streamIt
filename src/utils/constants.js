@@ -42,5 +42,5 @@ export const LANGUAGES = {
   HINDI: "hi",
 };
 
-export const OPEN_API_KEY =
-  "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";
+export const GEMINI_API_KEY =
+  "AQ.Ab8RN6LLtrBTGwp6PfqEtT8OtANbHeRCXeU869JMG3kfYw9N9g";
