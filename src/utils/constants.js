@@ -41,3 +41,6 @@ export const LANGUAGES = {
   ENGLISH: "en",
   HINDI: "hi",
 };
+
+export const OPEN_API_KEY =
+  "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";
