@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 const GptSearchBar = () => {
+  const { t } = useTranslation();
   return (
     <div className="w-full">
       <form
@@ -8,7 +11,7 @@ const GptSearchBar = () => {
       >
         <input
           className="outline-none w-full px-4 py-3 bg-surface"
-          placeholder="Describe a movie, vibe, emotion, or genre..."
+          placeholder={t("gptSearch.placeholder")}
           type="text"
           name=""
           id=""

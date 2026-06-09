@@ -89,6 +89,10 @@
       "needHelp": "Need help?"
     }
   },
+  "gptSearch": {
+    "title": "Discover with AI",
+    "placeholder": "Describe a movie, vibe, emotion, or genre..."
+  },
   "footer": {
     "questions": "Questions? Call <phone>000-800-919-1743</phone>",
     "links": {
