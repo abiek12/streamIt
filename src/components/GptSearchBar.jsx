@@ -10,38 +10,27 @@ const GptSearchBar = () => {
     const response = await client.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `
-        You are an expert movie recommendation system.
+        You are a movie recommendation engine.
 
-        Analyze:
-        - Genre
-        - Mood
-        - Theme
-        - Era
-        - Audience preference
+        Based on the following user query:
 
-        Recommend exactly 10 movies based on ${searchText.current.value}.
+        "${searchText.current.value}"
 
-        Return ONLY JSON:
+        Recommend exactly 10 movies.
 
-        {
-          "recommendations": [
-            {
-              "title": "Movie Name",
-              "year": 2023,
-              "genre": "Sci-Fi",
-              "reason": "Why this movie matches"
-            }
-          ]
-        }
+        Rules:
+        - Return ONLY a comma-separated list of movie titles.
+        - One title per line.
+        - No numbering.
+        - No explanations.
+        - No markdown.
+        - No extra text.
         `,
     });
-    const text = response.text
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim();
 
-    const data = JSON.parse(text);
-    console.log("recommendations:", data);
+    const movies = response.text.split(",").map((movie) => movie.trim());
+
+    console.log("movies:", movies);
   };
 
   return (
