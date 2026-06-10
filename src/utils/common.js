@@ -1,4 +1,5 @@
 import { languages } from "../i18n/languages";
+import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "./constants";
 import client from "./gemini";
 
 export const movieCategoryTitles = (key) => {
@@ -50,5 +51,19 @@ export const fetchRecommendations = async (query) => {
     return movies;
   } catch (error) {
     console.error("Error fetching GPT recommendations:", error);
+  }
+};
+
+export const fetchMovieList = async (searchQuery) => {
+  try {
+    const res = await fetch(
+      `${TMDB_BASE_URL}/search/movie?query=${searchQuery}`,
+      TMDB_API_OPTIONS
+    );
+
+    const jsonData = await res.json();
+    return jsonData.results;
+  } catch (error) {
+    console.error("Error fetching movie list:", error);
   }
 };

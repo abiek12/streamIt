@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
-import { fetchRecommendations } from "../utils/common";
+import { fetchMovieList, fetchRecommendations } from "../utils/common";
 
 const GptSearchBar = () => {
   const { t } = useTranslation();
@@ -8,12 +8,15 @@ const GptSearchBar = () => {
 
   const handleGptSeach = async () => {
     // GPT CALL
-    const recommendedMovies = await fetchRecommendations(
+    const recommendedMovieTitles = await fetchRecommendations(
       searchText.current.value
     );
-    console.log("recommendedMovies:", recommendedMovies);
 
     // TMDB CALL
+    const tmdbMovies = recommendedMovieTitles.map((i) => fetchMovieList(i));
+
+    const movieLists = await Promise.all(tmdbMovies);
+    console.log(movieLists);
   };
 
   return (
