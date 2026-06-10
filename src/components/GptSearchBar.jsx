@@ -1,36 +1,19 @@
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
-import client from "../utils/gemini";
+import useGptRecommendations from "../hooks/useGptRecommendations";
 
 const GptSearchBar = () => {
   const { t } = useTranslation();
   const searchText = useRef(null);
 
   const handleGptSeach = async () => {
-    const response = await client.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: `
-        You are a movie recommendation engine.
+    // GPT CALL
+    const recommendedMovies = await useGptRecommendations(
+      searchText.current.value
+    );
+    console.log("recommendedMovies:", recommendedMovies);
 
-        Based on the following user query:
-
-        "${searchText.current.value}"
-
-        Recommend exactly 10 movies.
-
-        Rules:
-        - Return ONLY a comma-separated list of movie titles.
-        - One title per line.
-        - No numbering.
-        - No explanations.
-        - No markdown.
-        - No extra text.
-        `,
-    });
-
-    const movies = response.text.split(",").map((movie) => movie.trim());
-
-    console.log("movies:", movies);
+    // TMDB CALL
   };
 
   return (
