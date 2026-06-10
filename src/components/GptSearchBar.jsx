@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
-import useGptRecommendations from "../hooks/useGptRecommendations";
+import { fetchRecommendations } from "../utils/common";
 
 const GptSearchBar = () => {
   const { t } = useTranslation();
@@ -8,7 +8,7 @@ const GptSearchBar = () => {
 
   const handleGptSeach = async () => {
     // GPT CALL
-    const recommendedMovies = await useGptRecommendations(
+    const recommendedMovies = await fetchRecommendations(
       searchText.current.value
     );
     console.log("recommendedMovies:", recommendedMovies);

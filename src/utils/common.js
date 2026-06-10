@@ -1,4 +1,5 @@
 import { languages } from "../i18n/languages";
+import client from "./gemini";
 
 export const movieCategoryTitles = (key) => {
   switch (key) {
@@ -21,4 +22,33 @@ export const movieCategoryTitles = (key) => {
 
 export const returnLangLabel = (code) => {
   return languages.filter((i) => i.code === code).map((i) => i.label);
+};
+
+export const fetchRecommendations = async (query) => {
+  try {
+    const response = await client.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: `
+            You are a movie recommendation engine.
+            
+            Based on the following user query:
+            
+            "${query}"
+            
+            Recommend exactly 10 movies.
+            
+            Rules:
+            - Return ONLY a comma-separated list of movie titles.
+            - One title per line.
+            - No numbering.
+            - No explanations.
+            - No markdown.
+            - No extra text.`,
+    });
+
+    const movies = response.text.split(",").map((movie) => movie.trim());
+    return movies;
+  } catch (error) {
+    console.error("Error fetching GPT recommendations:", error);
+  }
 };
