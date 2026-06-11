@@ -1,11 +1,13 @@
 import { useTranslation } from "react-i18next";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { fetchMovieList, fetchRecommendations } from "../utils/common";
+import { useDispatch } from "react-redux";
+import { addRecommendedMovies } from "../stores/movieSllice";
 
 const GptSearchBar = () => {
   const { t } = useTranslation();
   const searchText = useRef(null);
-  const [tmdbMovieLists, setTmdbMovieLists] = useState(null);
+  const dispatch = useDispatch();
 
   const handleGptSeach = async () => {
     // GPT CALL
@@ -17,8 +19,7 @@ const GptSearchBar = () => {
     const tmdbMovies = recommendedMovieTitles.map((i) => fetchMovieList(i));
 
     const moviesList = await Promise.all(tmdbMovies);
-    console.log(moviesList);
-    setTmdbMovieLists(moviesList);
+    dispatch(addRecommendedMovies(moviesList));
   };
 
   return (
