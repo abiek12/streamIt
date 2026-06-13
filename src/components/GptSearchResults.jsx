@@ -3,9 +3,11 @@ import MovieList from "./MoiveList";
 const GptSearchResults = ({ recommendedMovies, movieTitles }) => {
   if (!recommendedMovies || !movieTitles) return null;
   return (
-    <div>
-      <h1>Search results</h1>
-      <MovieList title={movieTitles[0]} movies={recommendedMovies[0]} />
+    <div className="flex flex-col gap-4">
+      <h1 className="text-2xl font-semibold text-white">Search results</h1>
+      {movieTitles.map((i, idx) => (
+        <MovieList title={i} movies={recommendedMovies[idx]} />
+      ))}
     </div>
   );
 };

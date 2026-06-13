@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const GptSearch = () => {
   const { t } = useTranslation();
-  const { recommendedMoviesResults, gptRecommendedMovies } = useSelector(
+  const { gptRecommendedMovies, recommendedMoviesResults } = useSelector(
     (store) => store.gptRecommendedMovies
   );
 
@@ -15,10 +15,12 @@ const GptSearch = () => {
         <h1 className="text-2xl font-semibold">{t("gptSearch.title")}</h1>
         <GptSearchBar />
       </div>
-      <GptSearchResults
-        recommendedMovies={recommendedMoviesResults}
-        movieTitles={gptRecommendedMovies}
-      />
+      <div className="my-36 px-36">
+        <GptSearchResults
+          recommendedMovies={recommendedMoviesResults}
+          movieTitles={gptRecommendedMovies}
+        />
+      </div>
     </div>
   );
 };

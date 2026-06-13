@@ -9,18 +9,20 @@ const MovieList = ({ title, movies }) => {
       <div>
         <ul className="flex gap-4 w-full overflow-x-auto overflow-y-hidden no-scrollbar py-4">
           {movies &&
-            movies.map((i) => (
-              <li
-                key={i.id}
-                className="cursor-pointer transition-transform ease-in-out duration-300 hover:scale-110"
-              >
-                <MovieCard
+            movies.map((i) =>
+              i?.poster_path ? (
+                <li
                   key={i.id}
-                  title={i?.title || i?.original_title}
-                  posterUrl={i?.poster_path}
-                />
-              </li>
-            ))}
+                  className="cursor-pointer transition-transform ease-in-out duration-300 hover:scale-110"
+                >
+                  <MovieCard
+                    key={i.id}
+                    title={i?.title || i?.original_title}
+                    posterUrl={i?.poster_path}
+                  />
+                </li>
+              ) : null
+            )}
         </ul>
       </div>
     </div>

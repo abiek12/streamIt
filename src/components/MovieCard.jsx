@@ -1,6 +1,7 @@
 import { TMDB_CDN_URL, TMDB_IMAGE_SIZES } from "../utils/constants";
 
 const MovieCard = ({ title, posterUrl }) => {
+  if (!posterUrl) return null;
   return (
     <div className="w-44 h-64 rounded-lg overflow-hidden">
       <img
