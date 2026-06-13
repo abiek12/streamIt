@@ -36,7 +36,7 @@ export const fetchRecommendations = async (query) => {
             
             "${query}"
             
-            Recommend exactly 10 movies.
+            Recommend exactly 10 movies titles seperated with comas.
             
             Rules:
             - Return ONLY a comma-separated list of movie titles.

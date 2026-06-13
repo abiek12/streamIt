@@ -7,7 +7,7 @@ const GptSearch = () => {
   const { t } = useTranslation();
   const movies = useSelector((store) => store.movie);
 
-  console.log("movies:", movies);
+  console.log("Moives:", movies);
 
   return (
     <div>

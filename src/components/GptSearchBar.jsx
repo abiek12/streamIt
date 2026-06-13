@@ -15,6 +15,8 @@ const GptSearchBar = () => {
       searchText.current.value
     );
 
+    console.log("result from gpt:", recommendedMovieTitles);
+
     // TMDB CALL
     const tmdbMovies = recommendedMovieTitles.map((i) => fetchMovieList(i));
 
