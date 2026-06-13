@@ -19,7 +19,12 @@ const GptSearchBar = () => {
     const tmdbMovies = recommendedMovieTitles.map((i) => fetchMovieList(i));
 
     const moviesList = await Promise.all(tmdbMovies);
-    dispatch(addRecommendedMovies(moviesList));
+    dispatch(
+      addRecommendedMovies({
+        gptRecommendedMovies: recommendedMovieTitles,
+        recommendedMoviesResults: moviesList,
+      })
+    );
   };
 
   return (
