@@ -28,10 +28,16 @@ const Browse = () => {
         gptSearchValue={isGptSearch}
         gptSearchToggle={toggleScreen}
       />
-      {isGptSearch ? <GptSearch /> : <HeroSection />}
-      <div className="relative z-20 -mt-78 mb-12">
-        <MovieListSection />
-      </div>
+      {isGptSearch ? (
+        <GptSearch />
+      ) : (
+        <>
+          <HeroSection />
+          <div className="relative z-20 -mt-78 mb-12">
+            <MovieListSection />
+          </div>
+        </>
+      )}
       <Footer />
     </div>
   );

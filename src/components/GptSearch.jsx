@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 
 const GptSearch = () => {
   const { t } = useTranslation();
-  const movies = useSelector((store) => store.movie);
-
-  console.log("Moives:", movies);
+  const { recommendedMoviesResults, gptRecommendedMovies } = useSelector(
+    (store) => store.gptRecommendedMovies
+  );
 
   return (
     <div>
@@ -15,7 +15,10 @@ const GptSearch = () => {
         <h1 className="text-2xl font-semibold">{t("gptSearch.title")}</h1>
         <GptSearchBar />
       </div>
-      <GptSearchResults />
+      <GptSearchResults
+        recommendedMovies={recommendedMoviesResults}
+        movieTitles={gptRecommendedMovies}
+      />
     </div>
   );
 };

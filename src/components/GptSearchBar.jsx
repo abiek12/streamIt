@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 import { fetchMovieList, fetchRecommendations } from "../utils/common";
 import { useDispatch } from "react-redux";
-import { addRecommendedMovies } from "../stores/movieSllice";
+import { addRecommendedMovies } from "../stores/gptRecommendedSlice";
 
 const GptSearchBar = () => {
   const { t } = useTranslation();
@@ -14,8 +14,6 @@ const GptSearchBar = () => {
     const recommendedMovieTitles = await fetchRecommendations(
       searchText.current.value
     );
-
-    console.log("result from gpt:", recommendedMovieTitles);
 
     // TMDB CALL
     const tmdbMovies = recommendedMovieTitles.map((i) => fetchMovieList(i));
