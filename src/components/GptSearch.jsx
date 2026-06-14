@@ -10,16 +10,18 @@ const GptSearch = () => {
   );
 
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-14">
       <div className="relative overflow-hidden bg-black mt-36 px-36 text-white flex flex-col gap-4">
         <h1 className="text-2xl font-semibold">{t("gptSearch.title")}</h1>
         <GptSearchBar />
       </div>
       <div className="px-36">
-        <GptSearchResults
-          recommendedMovies={recommendedMoviesResults}
-          movieTitles={gptRecommendedMovies}
-        />
+        {gptRecommendedMovies && recommendedMoviesResults ? (
+          <GptSearchResults
+            recommendedMovies={recommendedMoviesResults}
+            movieTitles={gptRecommendedMovies.map((i) => i.title)}
+          />
+        ) : null}
       </div>
     </div>
   );

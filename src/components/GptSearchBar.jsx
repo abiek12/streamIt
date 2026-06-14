@@ -14,7 +14,6 @@ const GptSearchBar = () => {
     const recommendedMovies = await fetchRecommendations(
       searchText.current.value
     );
-    console.log("final recommended movies:", recommendedMovies);
 
     // TMDB CALL
     const tmdbMovies = recommendedMovies.map((i) => fetchMovieList(i));
@@ -22,7 +21,7 @@ const GptSearchBar = () => {
     const moviesList = await Promise.all(tmdbMovies);
     dispatch(
       addRecommendedMovies({
-        gptRecommendedMovies: recommendedMovieTitles,
+        gptRecommendedMovies: recommendedMovies,
         recommendedMoviesResults: moviesList,
       })
     );

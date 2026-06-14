@@ -55,7 +55,9 @@ export const fetchRecommendations = async (userInput) => {
 
     // const geminiRes = await invokeGemini(query, userInput);
     const gptRes = await invokeGPT(query, userInput);
-    const movies = JSON.parse(gptRes.output_text);
+    const movies = JSON.parse(gptRes.output_text).sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
 
     return movies;
   } catch (error) {
@@ -64,15 +66,12 @@ export const fetchRecommendations = async (userInput) => {
 };
 
 export const fetchMovieList = async (movieDetails) => {
-  console.log("tmdb:", movieDetails);
-  const { title, year } = movieDetails;
+  const { title, year, originalLanguage } = movieDetails;
   try {
     const res = await fetch(
-      `${TMDB_BASE_URL}/search/movie?query=${title}&year=${year}`,
+      `${TMDB_BASE_URL}/search/movie?query=${title}&year=${year}&language=${originalLanguage}`,
       TMDB_API_OPTIONS
     );
-
-    console.log("tmdb res:", res);
 
     const jsonData = await res.json();
     return jsonData.results;
