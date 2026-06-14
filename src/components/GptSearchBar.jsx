@@ -6,6 +6,7 @@ import {
   addRecommendedMovies,
   clearRecommendedMovies,
 } from "../stores/gptRecommendedSlice";
+import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
 
 const GptSearchBar = ({ loading, setLoading, error, setError }) => {
   const { t } = useTranslation();
@@ -38,6 +39,7 @@ const GptSearchBar = ({ loading, setLoading, error, setError }) => {
       );
     } catch (error) {
       setError(error);
+      popupNotification(TOAST_TYPE.ERROR, "Error while searching movies!");
     } finally {
       setLoading(false);
     }
