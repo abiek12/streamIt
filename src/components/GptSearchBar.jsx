@@ -11,12 +11,13 @@ const GptSearchBar = () => {
 
   const handleGptSeach = async () => {
     // GPT CALL
-    const recommendedMovieTitles = await fetchRecommendations(
+    const recommendedMovies = await fetchRecommendations(
       searchText.current.value
     );
+    console.log("final recommended movies:", recommendedMovies);
 
     // TMDB CALL
-    const tmdbMovies = recommendedMovieTitles.map((i) => fetchMovieList(i));
+    const tmdbMovies = recommendedMovies.map((i) => fetchMovieList(i));
 
     const moviesList = await Promise.all(tmdbMovies);
     dispatch(

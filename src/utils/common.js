@@ -38,16 +38,19 @@ export const fetchRecommendations = async (userInput) => {
       Format:
       [
         {
-          "title": "Movie Name",
-          "year": 2020
+          "title": "Movie Title",
+          "year": 2020,
+          "originalLanguage": "en"
         }
       ]
 
       Requirements:
       - Exactly 10 movies.
       - Include release year.
+      - Include original language as ISO 639-1 code.
       - No duplicates.
-      - Prefer well-known theatrical releases.
+      - Prefer popular, highly-rated, relevant movies.
+      - Max 2 movies from the same franchise.
       - Return only valid JSON.`;
 
     // const geminiRes = await invokeGemini(query, userInput);
@@ -60,12 +63,16 @@ export const fetchRecommendations = async (userInput) => {
   }
 };
 
-export const fetchMovieList = async (searchQuery) => {
+export const fetchMovieList = async (movieDetails) => {
+  console.log("tmdb:", movieDetails);
+  const { title, year } = movieDetails;
   try {
     const res = await fetch(
-      `${TMDB_BASE_URL}/search/movie?query=${searchQuery}`,
+      `${TMDB_BASE_URL}/search/movie?query=${title}&year=${year}`,
       TMDB_API_OPTIONS
     );
+
+    console.log("tmdb res:", res);
 
     const jsonData = await res.json();
     return jsonData.results;
