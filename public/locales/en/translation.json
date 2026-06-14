@@ -91,6 +91,7 @@
   },
   "gptSearch": {
     "title": "Discover with AI",
+    "subTitle": "Search results",
     "placeholder": "Describe a movie, vibe, emotion, or genre..."
   },
   "footer": {
