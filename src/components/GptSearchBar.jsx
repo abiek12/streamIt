@@ -7,13 +7,22 @@ import {
   clearRecommendedMovies,
 } from "../stores/gptRecommendedSlice";
 import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
+import { useForm } from "react-hook-form";
+import { searchSchema } from "../utils/validate";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const GptSearchBar = ({ loading, setLoading, error, setError }) => {
   const { t } = useTranslation();
-  const searchText = useRef(null);
   const dispatch = useDispatch();
 
-  const handleGptSeach = async () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({ resolver: zodResolver(searchSchema), mode: "onBlur" });
+
+  const handleGptSeach = async (data) => {
     try {
       // Set loading
       setLoading(true);
@@ -22,9 +31,7 @@ const GptSearchBar = ({ loading, setLoading, error, setError }) => {
       dispatch(clearRecommendedMovies());
 
       // GPT CALL
-      const recommendedMovies = await fetchRecommendations(
-        searchText.current.value
-      );
+      const recommendedMovies = await fetchRecommendations(data.searchText);
 
       // TMDB CALL
       const tmdbMovies = recommendedMovies.map((i) => fetchMovieList(i));
@@ -53,24 +60,29 @@ const GptSearchBar = ({ loading, setLoading, error, setError }) => {
       <form
         action=""
         method="post"
-        className="flex flex-col md:flex-row w-full gap-4"
+        className="flex flex-col gap-4"
         onSubmit={(e) => e.preventDefault()}
       >
-        <input
-          ref={searchText}
-          className="outline-none w-full px-4 py-3 bg-surface"
-          placeholder={t("gptSearch.placeholder")}
-          type="text"
-          name=""
-          id=""
-        />
-        <button
-          type="submit"
-          className="px-4 py-2 text-white font-medium cursor-pointer bg-primary hover:bg-primary-hover"
-          onClick={handleGptSeach}
-        >
-          Search
-        </button>
+        <div className="flex flex-col md:flex-row w-full gap-4">
+          <input
+            className="outline-none w-full px-4 py-3 bg-surface"
+            placeholder={t("gptSearch.placeholder")}
+            type="text"
+            name="GPT Search"
+            id=""
+            {...register("searchText")}
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 text-white font-medium cursor-pointer bg-primary hover:bg-primary-hover"
+            onClick={handleSubmit(handleGptSeach)}
+          >
+            Search
+          </button>
+        </div>
+        {errors.searchText && (
+          <p className="text-red-600 text-sm">{errors.searchText.message}</p>
+        )}
       </form>
     </div>
   );

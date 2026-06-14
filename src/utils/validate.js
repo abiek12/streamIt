@@ -28,3 +28,7 @@ export const registerSchema = z.object({
       }
     ),
 });
+
+export const searchSchema = z.object({
+  searchText: z.string().min(3, "Search query must be at least 3 characters"),
+});
