@@ -31,9 +31,13 @@ const GptSearch = () => {
             movieTitles={gptRecommendedMovies.map((i) => i.title)}
           />
         ) : isLoading ? (
-          <p className="text-white">Loading...</p>
+          <div className="flex justify-center items-center">
+            <div className="w-16 h-16 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          </div>
         ) : error ? (
-          <p className="text-red-500">An error occurred: {error.message}</p>
+          <div className="flex justify-center items-center">
+            <p className="text-red-500">An error occurred: {error.message}</p>
+          </div>
         ) : null}
       </div>
     </div>
