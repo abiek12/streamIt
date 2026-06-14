@@ -1,6 +1,6 @@
 import { languages } from "../i18n/languages";
 import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "./constants";
-import client from "./gemini";
+import invokeGPT from "./openai";
 
 export const movieCategoryTitles = (key) => {
   switch (key) {
@@ -25,29 +25,26 @@ export const returnLangLabel = (code) => {
   return languages.filter((i) => i.code === code).map((i) => i.label);
 };
 
-export const fetchRecommendations = async (query) => {
+export const fetchRecommendations = async (userInput) => {
   try {
-    const response = await client.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: `
-            You are a movie recommendation engine.
-            
-            Based on the following user query:
-            
-            "${query}"
-            
-            Recommend exactly 10 movies titles seperated with comas.
-            
-            Rules:
-            - Return ONLY a comma-separated list of movie titles.
-            - One title per line.
-            - No numbering.
-            - No explanations.
-            - No markdown.
-            - No extra text.`,
-    });
+    const query = `
+      You are a movie recommendation engine.
 
-    const movies = response.text.split(",").map((movie) => movie.trim());
+      User request:
+      "${userInput}"
+
+      Return exactly 10 movie titles that best match the user's intent.
+
+      Requirements:
+      - Prefer popular, highly-rated, relevant movies.
+      - Avoid duplicate titles.
+      - Return only a JSON array of strings.
+      - Exactly 10 items.`;
+
+    // const geminiRes = await invokeGemini(query, userInput);
+    const gptRes = await invokeGPT(query, userInput);
+    const movies = JSON.parse(gptRes.output_text);
+
     return movies;
   } catch (error) {
     console.error("Error fetching GPT recommendations:", error);
