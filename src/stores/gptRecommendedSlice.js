@@ -13,8 +13,13 @@ const gptRecommendedSlice = createSlice({
       state.gptRecommendedMovies = gptRecommendedMovies;
       state.recommendedMoviesResults = recommendedMoviesResults;
     },
+    clearRecommendedMovies: (state, actions) => {
+      state.gptRecommendedMovies = null;
+      state.recommendedMoviesResults = null;
+    },
   },
 });
 
-export const { addRecommendedMovies } = gptRecommendedSlice.actions;
+export const { addRecommendedMovies, clearRecommendedMovies } =
+  gptRecommendedSlice.actions;
 export default gptRecommendedSlice.reducer;

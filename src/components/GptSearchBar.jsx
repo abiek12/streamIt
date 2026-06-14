@@ -2,29 +2,45 @@ import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 import { fetchMovieList, fetchRecommendations } from "../utils/common";
 import { useDispatch } from "react-redux";
-import { addRecommendedMovies } from "../stores/gptRecommendedSlice";
+import {
+  addRecommendedMovies,
+  clearRecommendedMovies,
+} from "../stores/gptRecommendedSlice";
 
-const GptSearchBar = () => {
+const GptSearchBar = ({ loading, setLoading, error, setError }) => {
   const { t } = useTranslation();
   const searchText = useRef(null);
   const dispatch = useDispatch();
 
   const handleGptSeach = async () => {
-    // GPT CALL
-    const recommendedMovies = await fetchRecommendations(
-      searchText.current.value
-    );
+    try {
+      // Set loading
+      setLoading(true);
 
-    // TMDB CALL
-    const tmdbMovies = recommendedMovies.map((i) => fetchMovieList(i));
+      // Clear store
+      dispatch(clearRecommendedMovies());
 
-    const moviesList = await Promise.all(tmdbMovies);
-    dispatch(
-      addRecommendedMovies({
-        gptRecommendedMovies: recommendedMovies,
-        recommendedMoviesResults: moviesList,
-      })
-    );
+      // GPT CALL
+      const recommendedMovies = await fetchRecommendations(
+        searchText.current.value
+      );
+
+      // TMDB CALL
+      const tmdbMovies = recommendedMovies.map((i) => fetchMovieList(i));
+      const moviesList = await Promise.all(tmdbMovies);
+
+      // Update store with recommended movies and their details
+      dispatch(
+        addRecommendedMovies({
+          gptRecommendedMovies: recommendedMovies,
+          recommendedMoviesResults: moviesList,
+        })
+      );
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
