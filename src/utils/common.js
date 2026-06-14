@@ -33,13 +33,22 @@ export const fetchRecommendations = async (userInput) => {
       User request:
       "${userInput}"
 
-      Return exactly 10 movie titles that best match the user's intent.
+      Return a JSON array.
+
+      Format:
+      [
+        {
+          "title": "Movie Name",
+          "year": 2020
+        }
+      ]
 
       Requirements:
-      - Prefer popular, highly-rated, relevant movies.
-      - Avoid duplicate titles.
-      - Return only a JSON array of strings.
-      - Exactly 10 items.`;
+      - Exactly 10 movies.
+      - Include release year.
+      - No duplicates.
+      - Prefer well-known theatrical releases.
+      - Return only valid JSON.`;
 
     // const geminiRes = await invokeGemini(query, userInput);
     const gptRes = await invokeGPT(query, userInput);
