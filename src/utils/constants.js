@@ -42,8 +42,6 @@ export const LANGUAGES = {
   HINDI: "hi",
 };
 
-export const GEMINI_API_KEY =
-  "AQ.Ab8RN6LLtrBTGwp6PfqEtT8OtANbHeRCXeU869JMG3kfYw9N9g";
+export const GEMINI_API_KEY = "your_gemini_api_key_here";
 
-export const OPEN_API_KEY =
-  "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";
+export const OPEN_API_KEY = import.meta.env.VITE_OPEN_API_KEY;
