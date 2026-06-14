@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { useRef } from "react";
 import { fetchMovieList, fetchRecommendations } from "../utils/common";
 import { useDispatch } from "react-redux";
 import {

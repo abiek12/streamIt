@@ -55,9 +55,7 @@ export const fetchRecommendations = async (userInput) => {
 
     // const geminiRes = await invokeGemini(query, userInput);
     const gptRes = await invokeGPT(query, userInput);
-    const movies = JSON.parse(gptRes.output_text).sort((a, b) =>
-      a.title.localeCompare(b.title)
-    );
+    const movies = JSON.parse(gptRes.output_text);
 
     return movies;
   } catch (error) {
