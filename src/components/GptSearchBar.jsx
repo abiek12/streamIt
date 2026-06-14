@@ -39,7 +39,10 @@ const GptSearchBar = ({ loading, setLoading, error, setError }) => {
       );
     } catch (error) {
       setError(error);
-      popupNotification(TOAST_TYPE.ERROR, "Error while searching movies!");
+      popupNotification(
+        TOAST_TYPE.ERROR,
+        "An error occurred while fetching recommendations."
+      );
     } finally {
       setLoading(false);
     }
