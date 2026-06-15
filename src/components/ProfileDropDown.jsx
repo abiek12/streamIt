@@ -10,10 +10,13 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { popupNotification, TOAST_TYPE } from "../utils/toastPopups";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { clearEveryMovies } from "../stores/movieSllice";
 
 export const ProfileDropDown = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const [profiles, setProfiles] = useState([
     {
       id: 1,
@@ -32,7 +35,8 @@ export const ProfileDropDown = () => {
   const handleLogout = async () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
+        // Need to clear the local storage and redux store here
+        dispatch(clearEveryMovies());
         popupNotification(TOAST_TYPE.SUCCESS, "Log out successfully!");
       })
       .catch((error) => {
