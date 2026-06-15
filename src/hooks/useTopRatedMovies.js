@@ -5,6 +5,7 @@ import { addTopRatedMovies } from "../stores/movieSllice";
 
 const useTopRatedMovies = () => {
   const dispatch = useDispatch();
+  const topRatedMovies = useSelector((store) => store.movie?.topRatedMovies);
 
   const fetchTopRatedMovies = async () => {
     try {
@@ -21,7 +22,7 @@ const useTopRatedMovies = () => {
   };
 
   useEffect(() => {
-    fetchTopRatedMovies();
+    if (!topRatedMovies) fetchTopRatedMovies();
   }, []);
 };
 

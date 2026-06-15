@@ -5,6 +5,7 @@ import { addNowPlayingMovies } from "../stores/movieSllice";
 
 const usePopularMovies = () => {
   const dispatch = useDispatch();
+  const popularMovies = useSelector((store) => store.movie?.popularMovies);
 
   const fetchPopularMovies = async () => {
     try {
@@ -21,7 +22,7 @@ const usePopularMovies = () => {
   };
 
   useEffect(() => {
-    fetchPopularMovies();
+    if (!popularMovies) fetchPopularMovies();
   }, []);
 };
 

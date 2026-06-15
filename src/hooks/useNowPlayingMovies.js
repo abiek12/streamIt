@@ -1,10 +1,13 @@
 import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPopularMovies } from "../stores/movieSllice";
 import { useEffect } from "react";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
+  const nowPlayingMovies = useSelector(
+    (store) => store.movie?.nowPlayingMovies
+  );
 
   const fetchNowPlayingMovies = async () => {
     try {
@@ -21,7 +24,7 @@ const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
-    fetchNowPlayingMovies();
+    if (!nowPlayingMovies) fetchNowPlayingMovies();
   }, []);
 };
 

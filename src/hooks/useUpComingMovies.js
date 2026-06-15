@@ -5,6 +5,7 @@ import { addUpComingMovies } from "../stores/movieSllice";
 
 const useUpComingMovies = () => {
   const dispatch = useDispatch();
+  const upComingMovies = useSelector((store) => store.movie?.upComingMovies);
 
   const fetchUpComingMovies = async () => {
     try {
@@ -21,7 +22,7 @@ const useUpComingMovies = () => {
   };
 
   useEffect(() => {
-    fetchUpComingMovies();
+    if (!upComingMovies) fetchUpComingMovies();
   }, []);
 };
 
