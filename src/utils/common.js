@@ -25,7 +25,7 @@ export const returnLangLabel = (code) => {
   return languages.filter((i) => i.code === code).map((i) => i.label);
 };
 
-export const fetchRecommendations = async (userInput) => {
+export const fetchAiRecommendations = async (userInput) => {
   try {
     const query = `
       You are a movie recommendation engine.

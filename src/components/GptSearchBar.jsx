@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { fetchMovieList, fetchRecommendations } from "../utils/common";
+import { fetchMovieList, fetchAiRecommendations } from "../utils/common";
 import { useDispatch } from "react-redux";
 import {
   addRecommendedMovies,
@@ -30,7 +30,7 @@ const GptSearchBar = ({ loading, setLoading, error, setError }) => {
       dispatch(clearRecommendedMovies());
 
       // GPT CALL
-      const recommendedMovies = await fetchRecommendations(data.searchText);
+      const recommendedMovies = await fetchAiRecommendations(data.searchText);
 
       // TMDB CALL
       const tmdbMovies = recommendedMovies.map((i) => fetchMovieList(i));
