@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TMDB_API_OPTIONS, TMDB_BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { addTopRatedMovies } from "../stores/movieSllice";
