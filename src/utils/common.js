@@ -51,7 +51,9 @@ export const fetchAiRecommendations = async (userInput) => {
       - No duplicates.
       - Prefer popular, highly-rated, relevant movies.
       - Max 2 movies from the same franchise.
-      - Return only valid JSON.`;
+      - Return ONLY raw JSON.
+      - Do not use markdown.
+      - Do not use code fences.`;
 
     // const geminiRes = await invokeGemini(query, userInput);
     const gptRes = await invokeGPT(query, userInput);

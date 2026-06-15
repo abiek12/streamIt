@@ -9,7 +9,7 @@ const client = new OpenAI({
 const invokeGPT = async (query, userInput) => {
   try {
     return await client.responses.create({
-      model: "gpt-5.4-mini",
+      model: "gpt-4o-mini",
       instructions: query,
       input: userInput,
     });
